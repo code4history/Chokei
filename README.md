@@ -38,6 +38,20 @@
 
 ### 提供フォーマット
 
+[png](https://github.com/code4history/IconForStoneAssets/tree/main/png)および[svg](https://github.com/code4history/IconForStoneAssets/tree/main/svg)フォーマットで提供しています。
+
+### バリエーション
+
+新規(new)以外のアイコンについては、要アクション(_action)と喪失(_missing)を表すバリエーションアイコンを提供しています。
+
+#### 例:青面金剛の場合
+
+| 画像                                                                                             | バリエーション | ファイル名(拡張子なし)                                   |
+|------------------------------------------------------------------------------------------------|---------|------------------------------------------------|
+| ![ノーマル](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/shomen.png) | ノーマル | shomen |
+| ![要アクション](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/shomen_action.png) | 要アクション   | shomen_action |
+| ![喪失](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/shomen_missing.png) | 喪失 | shomen_missing |
+
 ### ライセンス
 掲載されているアイコンは、[クリエイティブ・コモンズ【表示4.0国際】](https://creativecommons.org/licenses/by-sa/4.0/deed.en)ライセンスに従うかぎり、商用利用を含め、自由に複製または改変してご利用いただくことが可能です。詳細は利用規約をご確認ください。  
 アイコン利用の際は、利用プロダクトの説明文などの中で、本プロダクトの利用とクリエイティブ・コモンズ【表示4.0国際】ライセンスを表記するため、以下の一文を含めてください。  
