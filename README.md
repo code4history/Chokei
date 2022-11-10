@@ -3,9 +3,9 @@
 
 ### アイコン一覧
 
-| A | B   |
+| 画像 | アイコン種別 |
 | --- |-----|
-| a | b   |
+| ![馬頭観音](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/bato.png) | 馬頭観音 |
 
 ### 提供フォーマット
 
