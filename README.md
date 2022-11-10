@@ -3,9 +3,38 @@
 
 ### アイコン一覧
 
-| 画像 | アイコン種別 |
-| --- |-----|
-| ![馬頭観音](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/bato.png) | 馬頭観音 |
+| 画像                                                                                                     | アイコン種別  |
+|--------------------------------------------------------------------------------------------------------|---------|
+| ![馬頭観音](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/bato.png)           | 馬頭観音    |
+| ![菩薩](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/bosatsu.png)          | 菩薩      |
+| ![忠魂碑](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/chukonhi.png)        | 忠魂碑     |
+| ![道標](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/dohyo.png)            | 道標      |
+| ![道祖神](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/dosojin.png)         | 道祖神     |
+| ![富士講](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/fujiko.png)          | 富士講     |
+| ![五輪塔](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/gorinto.png)         | 五輪塔     |
+| ![小祠](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/hokora.png)           | 小祠      |
+| ![宝篋印塔](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/hokyoin.png)        | 宝篋印塔    |
+| ![板碑](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/itahi.png)            | 　板碑     |
+| ![地蔵](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/jizo.png)             | 　地蔵     |
+| ![記念碑](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/kinenhi.png)         | 記念碑     |
+| ![庚申](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/koshin.png)           | 庚申      |
+| ![供養塔](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/kuyohi.png)          | 供養塔     |
+| ![山岳信仰](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/mount.png)          | 山岳信仰    |
+| ![名号塔](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/myogo.png)           | 名号塔     |
+| ![明王](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/myooh.png)            | 明王      |
+| ![如意輪観音](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/nyoirin.png)       | 如意輪観音   |
+| ![如来](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/nyorai.png)           | 如来      |
+| ![石神](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/sekijin.png)          | 石神      |
+| ![石祠](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/sekishi.png)          | 石祠      |
+| ![青面金剛](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/shomen.png)         | 青面金剛    |
+| ![小神社](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/shrine.png)          | 小神社     |
+| ![石造物](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/stone.png)           | 石造物     |
+| ![天部 - 女性](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/ten_female.png)  | 天部 - 女性 |
+| ![天部 - 男性](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/ten_male.png)    | 天部 - 男性 |
+| ![神木](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/tree.png)             | 神木      |
+| ![月待塔](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/tsukimachi.png)      | 月待塔     |
+| ![浮彫五輪塔](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/ukibori_gorin.png) | 浮彫五輪塔   |
+| ![新規](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/new.png)              | 新規      |
 
 ### 提供フォーマット
 
