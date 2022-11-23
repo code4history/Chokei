@@ -9,14 +9,14 @@
 | ![如来](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/nyorai.png)           | 如来      | nyorai | 阿弥陀如来のイメージで代表させています。                           |
 | ![明王](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/myooh.png)            | 明王      | myooh | 不動明王のイメージで代表させています。                            |
 | ![菩薩](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/bosatsu.png)          | 菩薩      | bosatsu | 聖観音のイメージで代表させています。                             |
-| ![地蔵](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/jizo.png)             | 　地蔵     | jizo | 地蔵は菩薩から独立させています。                               |
+| ![地蔵](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/jizo.png)             |　地蔵     | jizo | 地蔵は菩薩から独立させています。                               |
 | ![馬頭観音](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/bato.png)           | 馬頭観音    | bato | 馬頭観音は菩薩から独立させています。                             |
 | ![如意輪観音](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/nyoirin.png)       | 如意輪観音   | nyoirin | 如意輪観音は菩薩から独立させています。                            |
 | ![天部 - 男性](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/ten_male.png)    | 天部 - 男性 | ten_male | 多聞天のイメージで代表させています。                             |
 | ![天部 - 女性](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/ten_female.png)  | 天部 - 女性 | ten_female | 弁財天のイメージで代表させています。                             |
 | ![五輪塔](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/gorinto.png)         | 五輪塔     | gorinto | 五輪塔のイメージです。                                    |
 | ![宝篋印塔](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/hokyoin.png)        | 宝篋印塔    | hokyoin | 宝篋印塔のイメージです。                                   |
-| ![板碑](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/itahi.png)            | 　板碑     | itahi | キリークの描かれた板碑のイメージです。                            |
+| ![板碑](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/itahi.png)            |　板碑     | itahi | キリークの描かれた板碑のイメージです。                            |
 | ![浮彫五輪塔](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/ukibori_gorin.png) | 浮彫五輪塔   | ukibori_gorin | 五輪塔の舟形背面レリーフのイメージです。                           |
 | ![供養塔](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/kuyohi.png)          | 供養塔     | kuyohi | 回国供養塔、念仏供養塔などのイメージです。                          |
 | ![名号塔](https://raw.githubusercontent.com/code4history/IconForStoneAssets/main/png/myogo.png)           | 名号塔     | myogo | 名号、題目どちらにも使えるよう「南無」と記しました。                     |
