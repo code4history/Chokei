@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 28 40" style="enable-background:new 0 0 28 40;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{fill:#808080;}
+	.st2{fill:#CCCCCC;}
+	.st3{fill:#998F90;}
+	.st4{fill:#1B1464;}
+	.st5{fill:#FFFFFF;}
+	.st6{fill:#2E3192;}
+	.st7{opacity:0.3;fill:#FFFFFF;}
+	.st8{fill:#FFCE00;}
+	.st9{fill:#929292;}
+	.st10{fill:#FF0000;}
+	.st11{fill:#F2F2F2;}
+</style>
+<g id="ガイド_00000162338702563158607440000009963323815856875396_" class="st0">
+</g>
+<g id="ピン">
+	<g>
+		<polygon class="st1" points="15,40 13,40 12,30 16,30 		"/>
+		<rect x="14" y="30" class="st2" width="1" height="10"/>
+	</g>
+	<g>
+		<rect x="12" y="20" class="st1" width="4" height="10"/>
+		<rect x="14" y="20" class="st2" width="1" height="10"/>
+	</g>
+</g>
+<g id="ノーマル">
+	<rect id="柱_00000168096331100175819820000007488946623102373310_" x="4" class="st3" width="4" height="30"/>
+	<rect id="柱" x="20" class="st3" width="4" height="30"/>
+	<rect id="貫" x="1" y="8" class="st3" width="26" height="4"/>
+	<rect id="笠木" class="st3" width="28" height="4"/>
+</g>
+<g id="画像なし">
+	<g>
+		<path class="st4" d="M27.1,21.6l-7.5,7.5c-1.2,1.2-3.1,1.2-4.2,0l-7.5-7.5c-1.2-1.2-1.2-3.1,0-4.2l7.5-7.5c1.2-1.2,3.1-1.2,4.2,0
+			l7.5,7.5C28.3,18.5,28.3,20.5,27.1,21.6z"/>
+		<path id="カメラ" class="st5" d="M22,15.5h-1.5l-0.8-1.6c-0.1-0.2-0.3-0.4-0.6-0.4h-3.2c-0.2,0-0.5,0.1-0.6,0.4l-0.8,1.6H13
+			c-0.9,0-1.5,0.7-1.5,1.5V22c0,0.9,0.7,1.5,1.5,1.5H22c0.9,0,1.5-0.7,1.5-1.5V17C23.5,16.2,22.8,15.5,22,15.5z M17.5,22
+			c-1.4,0-2.5-1.1-2.5-2.5c0-1.4,1.1-2.5,2.5-2.5c1.4,0,2.5,1.1,2.5,2.5C20,20.9,18.9,22,17.5,22z"/>
+		<g id="斜線">
+			<rect x="10.3" y="18.6" transform="matrix(0.7071 0.7071 -0.7071 0.7071 18.7662 -7.0127)" class="st6" width="15" height="1"/>
+			<rect x="9.6" y="19.4" transform="matrix(0.7071 0.7071 -0.7071 0.7071 19.0591 -6.3056)" class="st5" width="15" height="1"/>
+		</g>
+	</g>
+</g>
+
+
+</svg>

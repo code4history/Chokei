@@ -24,6 +24,10 @@
   },
   "homepage": "https://github.com/code4history/Chokei#readme",
   "dependencies": {
-    "piconvert": "^0.5.2"
+    "fs-extra": "^11.1.0",
+    "piconvert": "^0.5.2",
+    "svg-to-png": "^4.0.0",
+    "xmldom": "^0.6.0",
+    "xpath": "^0.0.32"
   }
 }

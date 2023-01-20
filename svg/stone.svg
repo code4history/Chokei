@@ -1,84 +1,86 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 40">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #fff;
-      }
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 28 40" style="enable-background:new 0 0 28 40;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{fill:#808080;}
+	.st2{fill:#CCCCCC;}
+	.st3{fill:#756E6D;}
+	.st4{fill:#E2CB5A;}
+	.st5{fill:#FFFFFF;}
+	.st6{fill:#39B54A;}
+	.st7{fill:#A96E2D;}
+	.st8{fill:#1B1464;}
+	.st9{fill:#2E3192;}
+	.st10{opacity:0.3;fill:#FFFFFF;}
+	.st11{fill:#FFCE00;}
+	.st12{fill:#707070;}
+	.st13{fill:#C5C5C5;}
+	.st14{fill:#848484;}
+	.st15{fill:#797979;}
+	.st16{fill:#FF0000;}
+	.st17{fill:#F2F2F2;}
+</style>
+<g id="ガイド_00000162338702563158607440000009963323815856875396_" class="st0">
+</g>
+<g id="ピン">
+	<g>
+		<g>
+			<polygon class="st1" points="15,40 13,40 12,30 16,30 			"/>
+			<rect x="14" y="30" class="st2" width="1" height="10"/>
+		</g>
+		<g>
+			<rect x="12" y="20" class="st1" width="4" height="10"/>
+			<rect x="14" y="20" class="st2" width="1" height="10"/>
+		</g>
+	</g>
+</g>
+<g id="ノーマル">
+	<path id="石" class="st3" d="M0,9.9c0.2-2.5,1.4-4.5,3.9-5.6S11.4,0.2,17.6,0S27.9,4.3,28,7.7s-2.1,10.1-12.9,10.1
+		S-0.2,13.8,0,9.9z"/>
+	<g id="注連縄_00000031924178544670268910000000783592560206907537_">
+		<g id="縄_00000044857303427781397740000018048907353513875900_">
+			<path class="st4" d="M6.2,7.1L6.2,7.1C5.5,7.8,4.5,7.8,3.9,7.2L1.5,4.8l0.1-0.1c0.6-0.6,1.6-0.6,2.2,0L6.2,7.1z"/>
+			<path class="st4" d="M8.6,7.1L8.6,7.1C8,7.8,7,7.8,6.4,7.2L4,4.8l0.1-0.1c0.6-0.6,1.6-0.6,2.2,0L8.6,7.1z"/>
+			<path class="st4" d="M11.1,7.1L11.1,7.1c-0.7,0.7-1.6,0.7-2.2,0.1L6.5,4.8l0.1-0.1c0.6-0.6,1.6-0.6,2.2,0L11.1,7.1z"/>
+			<path class="st4" d="M13.5,7.1L13.5,7.1c-0.7,0.7-1.6,0.7-2.2,0.1L8.9,4.8L9,4.7c0.6-0.6,1.6-0.6,2.2,0L13.5,7.1z"/>
+			<path class="st4" d="M16,7.1L16,7.1c-0.7,0.7-1.6,0.7-2.2,0.1l-2.4-2.4l0.1-0.1c0.6-0.6,1.6-0.6,2.2,0L16,7.1z"/>
+		</g>
+		<g id="縄">
+			<path class="st4" d="M18.2,7.1L18.2,7.1c-0.7,0.7-1.6,0.7-2.2,0.1l-2.4-2.4l0.1-0.1c0.6-0.6,1.6-0.6,2.2,0L18.2,7.1z"/>
+			<path class="st4" d="M20.6,7.1L20.6,7.1C20,7.8,19,7.8,18.4,7.2L16,4.8l0.1-0.1c0.6-0.6,1.6-0.6,2.2,0L20.6,7.1z"/>
+			<path class="st4" d="M23.1,7.1L23.1,7.1c-0.7,0.7-1.6,0.7-2.2,0.1l-2.4-2.4l0.1-0.1c0.6-0.6,1.6-0.6,2.2,0L23.1,7.1z"/>
+			<path class="st4" d="M25.5,7.1L25.5,7.1c-0.7,0.7-1.6,0.7-2.2,0.1l-2.4-2.4L21,4.7c0.6-0.6,1.6-0.6,2.2,0L25.5,7.1z"/>
+			<path class="st4" d="M28,7.1L28,7.1c-0.7,0.7-1.6,0.7-2.2,0.1l-2.4-2.4l0.1-0.1c0.6-0.6,1.6-0.6,2.2,0L28,7.1z"/>
+		</g>
+		<g id="紙垂_00000133523634227876083880000017595736600894340743_">
+			<rect x="8.5" y="7" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 9.787 21.1666)" class="st5" width="1.5" height="3"/>
+			<rect x="8.5" y="9.3" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 8.1804 25.0453)" class="st5" width="1.5" height="3"/>
+			<rect x="8.5" y="11.6" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 6.5738 28.924)" class="st5" width="1.5" height="3"/>
+		</g>
+		<g id="紙垂">
+			
+				<rect x="17.4" y="7.1" transform="matrix(-0.8786 -0.4776 0.4776 -0.8786 30.0412 24.9365)" class="st5" width="1.5" height="3"/>
+			
+				<rect x="18.1" y="9.3" transform="matrix(-0.8786 -0.4776 0.4776 -0.8786 30.2109 29.3373)" class="st5" width="1.5" height="3"/>
+			
+				<rect x="18.7" y="11.5" transform="matrix(-0.8786 -0.4776 0.4776 -0.8786 30.3805 33.7381)" class="st5" width="1.5" height="3"/>
+		</g>
+		<polygon id="筋_00000132777338549733392560000001207772682563052718_" class="st4" points="13.8,7 12.8,14 14.8,14 		"/>
+		<polygon id="筋_00000152262437947327421350000004466724861983383685_" class="st4" points="5.9,7.1 3.6,13.8 5.6,14.1 		"/>
+		<polygon id="筋" class="st4" points="22.6,7.1 24.9,13.8 23,14.1 		"/>
+	</g>
+	<g id="地面_00000085960540020044898610000002193894466238366089_">
+		<path id="草_00000050658507514173148250000014360179358624052912_" class="st6" d="M2.4,19c-0.4-1.3-0.5-2.2-1.3-3.5
+			C2.8,15.4,3.5,17.9,2.4,19L2.4,19z"/>
+		<path id="草_00000179627912085844586860000016558588140227868062_" class="st6" d="M26.6,19c-1.1-1.1-0.4-3.6,1.3-3.5
+			C27.1,16.8,27,17.7,26.6,19L26.6,19z"/>
+		<path id="草_00000151529837931384215080000007510860043949423779_" class="st6" d="M25.8,19.5c-1.2-2.3-0.6-6.1,2.1-7
+			C26.2,14.6,26.2,17,25.8,19.5L25.8,19.5z"/>
+		<rect id="地面" y="18" class="st7" width="28" height="2"/>
+	</g>
+</g>
 
-      .cls-2 {
-        fill: #e2cb5a;
-      }
 
-      .cls-3 {
-        fill: #756e6d;
-      }
 
-      .cls-4 {
-        fill: #39b54a;
-      }
-
-      .cls-5 {
-        fill: gray;
-      }
-
-      .cls-6 {
-        fill: #a96e2d;
-      }
-
-      .cls-7 {
-        fill: #ccc;
-      }
-    </style>
-  </defs>
-  <g id="_ピン" data-name="ピン">
-    <g>
-      <g>
-        <polygon class="cls-5" points="15 40 13 40 12 30 16 30 15 40"/>
-        <rect class="cls-7" x="14" y="30" width="1" height="10"/>
-      </g>
-      <g>
-        <rect class="cls-5" x="12" y="20" width="4" height="10"/>
-        <rect class="cls-7" x="14" y="20" width="1" height="10"/>
-      </g>
-    </g>
-  </g>
-  <g id="_ノーマル" data-name="ノーマル">
-    <path id="_石" data-name="石" class="cls-3" d="M.01,10.12c.17-2.49,1.4-4.51,3.94-5.63S11.38,.38,17.56,.18s10.37,4.3,10.44,7.68-2.09,10.14-12.88,10.14S-.25,14,.01,10.12Z"/>
-    <g id="_注連縄" data-name="注連縄">
-      <g id="_縄" data-name="縄">
-        <path class="cls-2" d="M3.04,3.51h.1c.85,0,1.54,.69,1.54,1.54v3.37h-.1c-.85,0-1.54-.69-1.54-1.54V3.51h0Z" transform="translate(-3.09 4.47) rotate(-45)"/>
-        <path class="cls-2" d="M5.5,3.51h.1c.85,0,1.54,.69,1.54,1.54v3.37h-.1c-.85,0-1.54-.69-1.54-1.54V3.51h0Z" transform="translate(-2.37 6.21) rotate(-45)"/>
-        <path class="cls-2" d="M7.95,3.51h.1c.85,0,1.54,.69,1.54,1.54v3.37h-.1c-.85,0-1.54-.69-1.54-1.54V3.51h0Z" transform="translate(-1.65 7.95) rotate(-45)"/>
-        <path class="cls-2" d="M10.41,3.51h.1c.85,0,1.54,.69,1.54,1.54v3.37h-.1c-.85,0-1.54-.69-1.54-1.54V3.51h0Z" transform="translate(-.93 9.69) rotate(-45)"/>
-        <path class="cls-2" d="M12.87,3.51h.1c.85,0,1.54,.69,1.54,1.54v3.37h-.1c-.85,0-1.54-.69-1.54-1.54V3.51h0Z" transform="translate(-.21 11.42) rotate(-45)"/>
-      </g>
-      <g id="_縄-2" data-name="縄">
-        <path class="cls-2" d="M15.04,3.51h.1c.85,0,1.54,.69,1.54,1.54v3.37h-.1c-.85,0-1.54-.69-1.54-1.54V3.51h0Z" transform="translate(.43 12.96) rotate(-45)"/>
-        <path class="cls-2" d="M17.5,3.51h.1c.85,0,1.54,.69,1.54,1.54v3.37h-.1c-.85,0-1.54-.69-1.54-1.54V3.51h0Z" transform="translate(1.15 14.7) rotate(-45)"/>
-        <path class="cls-2" d="M19.95,3.51h.1c.85,0,1.54,.69,1.54,1.54v3.37h-.1c-.85,0-1.54-.69-1.54-1.54V3.51h0Z" transform="translate(1.87 16.43) rotate(-45)"/>
-        <path class="cls-2" d="M22.41,3.51h.1c.85,0,1.54,.69,1.54,1.54v3.37h-.1c-.85,0-1.54-.69-1.54-1.54V3.51h0Z" transform="translate(2.59 18.17) rotate(-45)"/>
-        <path class="cls-2" d="M24.87,3.51h.1c.85,0,1.54,.69,1.54,1.54v3.37h-.1c-.85,0-1.54-.69-1.54-1.54V3.51h0Z" transform="translate(3.31 19.91) rotate(-45)"/>
-      </g>
-      <g id="_紙垂" data-name="紙垂">
-        <rect class="cls-1" x="8.52" y="7.04" width="1.51" height="3.03" transform="translate(9.79 21.17) rotate(-135)"/>
-        <rect class="cls-1" x="8.52" y="9.31" width="1.51" height="3.03" transform="translate(8.18 25.05) rotate(-135)"/>
-        <rect class="cls-1" x="8.52" y="11.59" width="1.51" height="3.03" transform="translate(6.57 28.92) rotate(-135)"/>
-      </g>
-      <g id="_紙垂-2" data-name="紙垂">
-        <rect class="cls-1" x="17.43" y="7.13" width="1.51" height="3.03" transform="translate(30.04 24.94) rotate(-151.47)"/>
-        <rect class="cls-1" x="18.08" y="9.31" width="1.51" height="3.03" transform="translate(30.21 29.34) rotate(-151.47)"/>
-        <rect class="cls-1" x="18.72" y="11.49" width="1.51" height="3.03" transform="translate(30.38 33.74) rotate(-151.47)"/>
-      </g>
-      <polygon id="_筋" data-name="筋" class="cls-2" points="13.76 7 12.76 14 14.76 14 13.76 7"/>
-      <polygon id="_筋-2" data-name="筋" class="cls-2" points="5.94 7.09 3.6 13.76 5.56 14.15 5.94 7.09"/>
-      <polygon id="_筋-3" data-name="筋" class="cls-2" points="22.6 7.09 24.94 13.76 22.98 14.15 22.6 7.09"/>
-    </g>
-    <g id="_地面" data-name="地面">
-      <path id="_草" data-name="草" class="cls-4" d="M2.4,19c-.44-1.34-.51-2.22-1.31-3.5,1.67-.06,2.41,2.38,1.31,3.5h0Z"/>
-      <path id="_草-2" data-name="草" class="cls-4" d="M26.58,19c-1.1-1.12-.36-3.56,1.31-3.5-.8,1.28-.87,2.16-1.31,3.5h0Z"/>
-      <path id="_草-3" data-name="草" class="cls-4" d="M25.82,19.5c-1.16-2.29-.63-6.07,2.07-7-1.67,2.1-1.73,4.49-2.07,7h0Z"/>
-      <rect id="_地面-2" data-name="地面" class="cls-6" y="18" width="28" height="2"/>
-    </g>
-  </g>
 </svg>
