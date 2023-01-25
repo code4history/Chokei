@@ -25,24 +25,24 @@ const convert_set = [
   { "set": 1, "original": "月待塔", "rename": "月待塔", "base": "tsukimachi", "description": "月待塔のイメージです。", "pattern": true },
   { "set": 1, "original": "富士塚", "rename": "富士講", "base": "fujiko", "description": "富士講の信仰対象、富士山のイメージです。", "pattern": true },
   { "set": 1, "original": "山岳信仰碑", "rename": "山岳信仰", "base": "mount", "description": "大峰、愛宕、出羽三山など山岳信仰のイメージです。", "pattern": true },
-  { "set": 1, "original": "小神社", "rename": "小神社", "base": "shrine", "description": "石造物ではないですが、奈良の調査で対象にしている関係で作成しました。鳥居や敷地を持つ小神社のイメージです。", "pattern": true },
-  { "set": 1, "original": "祠", "rename": "小祠", "base": "hokora", "description": "石造物ではないですが、奈良の調査で対象にしている関係で作成しました。春日造の小祠のイメージです。", "pattern": true },
+  { "set": 1, "original": "小神社", "rename": "小神社", "base": "shrine", "description": "石造物ではないですが、奈良の調査で対象にしている関係で作成しました。鳥居や敷地を持つ小神社のイメージです。", "pattern": true, "no_stone": true },
+  { "set": 1, "original": "祠", "rename": "小祠", "base": "hokora", "description": "石造物ではないですが、奈良の調査で対象にしている関係で作成しました。春日造の小祠のイメージです。", "pattern": true, "no_stone": true },
   { "set": 1, "original": "石祠", "rename": "石祠", "base": "sekishi", "description": "石造流造小祠のイメージです。", "pattern": true },
   { "set": 1, "original": "石神お塚", "rename": "石神", "base": "sekijin", "description": "稲荷神社や、龍神水神などによく見られる石神、お塚のイメージです。", "pattern": true },
-  { "set": 1, "original": "神木", "rename": "神木", "base": "tree", "description": "神木や野神など、信仰対象植物のイメージです。", "pattern": true },
+  { "set": 1, "original": "神木", "rename": "神木", "base": "tree", "description": "神木や野神など、信仰対象植物のイメージです。", "pattern": true, "no_stone": true },
   { "set": 1, "original": "忠魂碑", "rename": "忠魂碑", "base": "chukonhi", "description": "戦前によく見られた、篆書で碑銘が書かれた記念碑のイメージです。", "pattern": true },
   { "set": 1, "original": "記念碑", "rename": "記念碑", "base": "kinenhi", "description": "戦後によく見られる、黒光りする鏡面を持つ記念碑のイメージです。", "pattern": true },
   { "set": 1, "original": "道標", "rename": "道標", "base": "dohyo", "description": "道標とよくわかるよう、道案内板のイメージで描きました。", "pattern": true },
   { "set": 1, "original": "石造物", "rename": "石造物", "base": "stone", "description": "上記で用意されていない「その他石造物」のイメージです。", "pattern": true },
-  { "set": 1, "original": "新規報告", "rename": "新規", "base": "new", "description": "新規地物の投稿用、新規地物を示すアイコンです。", "pattern": false },
+  { "set": 1, "original": "新規報告", "rename": "新規", "base": "new", "description": "新規地物の投稿用、新規地物を示すアイコンです。", "pattern": false, "sys": true },
   { "set": 2, "original": "キリシタン灯篭", "rename": "キリシタン灯篭", "base": "christ_lantern", "description": "キリシタン灯篭のイメージです。", "pattern": true },
-  { "set": 2, "original": "暗渠", "rename": "暗渠", "base": "culvert", "description": "石造物ではないですが、観光案内POIデータセットで利用する関係で作成しました。暗渠から開渠になる箇所のイメージです。", "pattern": true },
+  { "set": 2, "original": "暗渠", "rename": "暗渠", "base": "culvert", "description": "石造物ではないですが、観光案内POIデータセットで利用する関係で作成しました。暗渠から開渠になる箇所のイメージです。", "pattern": true, "no_stone": true },
   { "set": 2, "original": "石標", "rename": "石標", "base": "stone_display", "description": "寺名標や社名標、下馬標など、石標のイメージです。", "pattern": true },
   { "set": 2, "original": "石灯篭", "rename": "石灯篭", "base": "stone_lantern", "description": "石灯籠のイメージです。", "pattern": true },
   { "set": 2, "original": "手水鉢", "rename": "手水鉢", "base": "stone_bowl", "description": "石で作られた手水鉢のイメージです。", "pattern": true },
   { "set": 2, "original": "欄干", "rename": "欄干", "base": "balustrade", "description": "暗渠化などで道端に残った橋の欄干や、橋跡を示す碑などに用いるイメージです。", "pattern": true },
-  { "set": 2, "original": "路地", "rename": "路地", "base": "alley", "description": "石造物ではないですが、観光案内POIデータセットで利用する関係で作成しました。街中の小さな路地のイメージです。", "pattern": true },
-  { "set": 2, "original": "坂", "rename": "坂", "base": "slope", "description": "石造物ではないですが、観光案内POIデータセットで利用する関係で作成しました。街中の小さな坂のイメージです。", "pattern": true },
+  { "set": 2, "original": "路地", "rename": "路地", "base": "alley", "description": "石造物ではないですが、観光案内POIデータセットで利用する関係で作成しました。街中の小さな路地のイメージです。", "pattern": true, "no_stone": true },
+  { "set": 2, "original": "坂", "rename": "坂", "base": "slope", "description": "石造物ではないですが、観光案内POIデータセットで利用する関係で作成しました。街中の小さな坂のイメージです。", "pattern": true, "no_stone": true },
   { "set": 2, "original": "日待塔", "rename": "日待塔", "base": "himachi", "description": "日の出をデザインした、甲子塔や巳待塔など、日待塔に用いるイメージです。", "pattern": true },
   { "set": 2, "original": "狛犬", "rename": "狛犬", "base": "komainu", "description": "神社に存在する狛犬のイメージです。", "pattern": true },
   { "set": 2, "original": "石鳥居", "rename": "石鳥居", "base": "stone_torii", "description": "石で作られた鳥居のイメージです。", "pattern": true },
@@ -60,7 +60,17 @@ const patterns = [
   {"id": "noimg", "suffix": "_noimg", "remove": ["要調査", "消失"]}
 ];
 
+const type_strings = {
+  "stone": "石造物",
+  "nostone": "非石造物",
+  "sys": "管理用途"
+};
+
+const table_htmls = [];
 const convert_src = [];
+
+const table_header = `| 画像  | アイコン種別  | ファイル名(拡張子なし)  | デザイン方向性  |
+|---------|---------|---------|---------|`;
 
 convert_set.forEach((line, index) => {
   const original = line.original;
@@ -68,6 +78,7 @@ convert_set.forEach((line, index) => {
   const base = line.base;
   const description = line.description;
   const set = line.set;
+  const type = line.no_stone ? "nostone" : line.sys ? "sys" : "stone";
   const l_patterns = patterns.filter((pat) => {
     return pat.id === "no" ? !line.pattern : line.pattern;
   });
@@ -85,19 +96,55 @@ convert_set.forEach((line, index) => {
     });
     const out_file = `./svg/${base}${suffix}.svg`;
     convert_src.push(path.resolve(__dirname, out_file));
-    fs.writeFileSync(out_file, doc.toString(), "utf-8");
+    let output = doc.toString();
+    //output = output.replace(/ id="[^"]+"/gm, "");
+    //output = output.replace(/<!--[^>]+-->[\n\r]+/gm, "");
+    //output = output.replace(" xmlns:xlink=\"http://www.w3.org/1999/xlink\"", "");
+    //output = output.replace(/(">|;})[\n\r]+\t?(\.st|<\/st)/gm, "$1 $2");
+    //output = output.replace(/(\d|z| )[\n\r]+\t+([^\t])/gm, "$1$2");
+    //output = output.replace(/(points="[\d,\. ]+\d)[ \t]+"/gm, "$1\"");
+    //output = output.replace(/>[ \r\n\t]+</gm, "><");
+    fs.writeFileSync(out_file, output, "utf-8");
   });
+  // Create table HTML
+  if (!table_htmls[set - 1]) table_htmls[set - 1] = {};
+  const htmls = table_htmls[set - 1];
+  if (!htmls[type]) htmls[type] = `##### ${type_strings[type]}アイコン\n\n${table_header}\n`;
+  htmls[type] = `${htmls[type]}| ![${rename}](https://raw.githubusercontent.com/code4history/Chokei/main/png/${base}.png)  | ${rename}  | ${base}  | ${description}  |\n`;
 });
+
+const table_html = table_htmls.reduce((prev, htmls, index) => {
+  prev = `${prev}\n#### 第${index + 1}弾\n`;
+  ["stone", "nostone", "sys"].forEach((type) => {
+    if (htmls[type]) prev = `${prev}${htmls[type]}`;
+  });
+  return prev;
+}, "")
+
+const readme = fs.readFileSync("./README.md", "utf-8").split(/\r?\n/);
+let skip = false;
+const new_readme = readme.reduce((prev, line, index) => {
+  if (skip) {
+    if (line === "<!--/icon_all-->") {
+      prev = `${prev}${line}\n`;
+      skip = false;
+    }
+  } else {
+    prev = `${prev}${line}`;
+    if (line === "<!--icon_all-->") {
+      prev = `${prev}\n${table_html}`;
+      skip = true;
+    } else {
+      if (index !== readme.length - 1) {
+        prev = `${prev}\n`;
+      }
+    }
+  }
+  return prev;
+}, "");
+fs.writeFileSync("./README.md", new_readme, "utf-8");
 
 svg_to_png.convert(convert_src, path.resolve(__dirname, "./png"), {defaultWidth: 28, defaultHeight: 40}) // async, returns promise
   .then( function(){
     // Do tons of stuff
   });
-
-
-/*const converter = new Converter()
-  .import("svg")
-  .export("png", ["28x40"]);
-
-converter.run("./svg", "./png");
-*/
