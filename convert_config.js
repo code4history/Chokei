@@ -71,9 +71,7 @@ convert_set.forEach((line, index) => {
   const l_patterns = patterns.filter((pat) => {
     return pat.id === "no" ? !line.pattern : line.pattern;
   });
-  const xml = fs.readFileSync(`./dest/${original}.svg`, "utf-8");
-  console.log(original);
-  console.log(l_patterns);
+  const xml = fs.readFileSync(`./original/${original}.svg`, "utf-8");
   l_patterns.forEach((pattern) => {
     const suffix = pattern.suffix;
     const doc = new dom().parseFromString(xml);
