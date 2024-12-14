@@ -55,7 +55,7 @@
 
 | 画像  | アイコン種別  | ファイル名(拡張子なし)  | デザイン方向性  |
 |---------|---------|---------|---------|
-| ![織部灯篭](https://raw.githubusercontent.com/code4history/Chokei/main/png/christ_lantern.png)  | 織部灯篭  | oribe_lantern  | 織部灯篭のイメージです。  |
+| ![織部灯篭](https://raw.githubusercontent.com/code4history/Chokei/main/png/oribe_lantern.png)  | 織部灯篭  | oribe_lantern  | 織部灯篭のイメージです。  |
 | ![石標](https://raw.githubusercontent.com/code4history/Chokei/main/png/stone_display.png)  | 石標  | stone_display  | 寺名標や社名標、下馬標など、石標のイメージです。  |
 | ![石灯篭](https://raw.githubusercontent.com/code4history/Chokei/main/png/stone_lantern.png)  | 石灯篭  | stone_lantern  | 石灯籠のイメージです。  |
 | ![手水鉢](https://raw.githubusercontent.com/code4history/Chokei/main/png/stone_bowl.png)  | 手水鉢  | stone_bowl  | 石で作られた手水鉢のイメージです。  |
