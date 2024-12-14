@@ -35,7 +35,7 @@ const convert_set = [
   { "set": 1, "original": "道標", "rename": "道標", "base": "dohyo", "description": "道標とよくわかるよう、道案内板のイメージで描きました。", "pattern": true },
   { "set": 1, "original": "石造物", "rename": "石造物", "base": "stone", "description": "上記で用意されていない「その他石造物」のイメージです。", "pattern": true },
   { "set": 1, "original": "新規報告", "rename": "新規", "base": "new", "description": "新規地物の投稿用、新規地物を示すアイコンです。", "pattern": false, "sys": true },
-  { "set": 2, "original": "キリシタン灯篭", "rename": "キリシタン灯篭", "base": "christ_lantern", "description": "キリシタン灯篭のイメージです。", "pattern": true },
+  { "set": 2, "original": "織部灯篭", "rename": "織部灯篭", "base": "oribe_lantern", "description": "織部灯篭のイメージです。", "pattern": true },
   { "set": 2, "original": "暗渠", "rename": "暗渠", "base": "culvert", "description": "石造物ではないですが、観光案内POIデータセットで利用する関係で作成しました。暗渠から開渠になる箇所のイメージです。", "pattern": true, "no_stone": true },
   { "set": 2, "original": "石標", "rename": "石標", "base": "stone_display", "description": "寺名標や社名標、下馬標など、石標のイメージです。", "pattern": true },
   { "set": 2, "original": "石灯篭", "rename": "石灯篭", "base": "stone_lantern", "description": "石灯籠のイメージです。", "pattern": true },
