@@ -1,8 +1,10 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { execFileSync } from 'node:child_process';
+import { mkdtempSync, readdirSync, rmSync, symlinkSync } from 'node:fs';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import {
   convert,
   convertCli,
@@ -96,6 +98,7 @@ describe('convert adapter', () => {
       types: string;
       exports: Record<string, Record<string, string> | string>;
       scripts: Record<string, string>;
+      files: string[];
     };
 
     expect(packageJson.main).toBe('index.js');
@@ -114,6 +117,9 @@ describe('convert adapter', () => {
       './package.json': './package.json',
     });
     expect(packageJson.scripts.inkscape).toBe('piconvert install');
+    expect(packageJson.scripts.prepare).toBe('pnpm run build');
+    expect(packageJson.scripts.prepack).toBe('pnpm run build');
+    expect(packageJson.files).toContain('dist');
 
     await expect(readFile(resolve(thisDirectory, '../index.js'), 'utf8')).resolves.toBe(
       'module.exports = require("./dist/index.cjs");\n',
@@ -124,6 +130,72 @@ describe('convert adapter', () => {
     await expect(readFile(resolve(thisDirectory, '../dist/convert.cjs'), 'utf8')).resolves.toBeDefined();
     await expect(readFile(resolve(thisDirectory, '../dist/convert.mjs'), 'utf8')).resolves.toBeDefined();
     await expect(readFile(resolve(thisDirectory, '../dist/convert.d.ts'), 'utf8')).resolves.toBeDefined();
+  });
+
+  it('packしたclean packageでCJS requireとESM importを解決する', () => {
+    const packageRoot = resolve(thisDirectory, '..');
+    const cleanCheckoutDirectory = mkdtempSync(join(tmpdir(), 'chokei-m1-t2-clean-'));
+    const packDirectory = mkdtempSync(join(tmpdir(), 'chokei-m1-t2-pack-'));
+    const checkoutDirectory = mkdtempSync(join(tmpdir(), 'chokei-m1-t2-checkout-'));
+    const packageManager = process.env.PNPM_BIN ?? 'pnpm';
+
+    try {
+      const sourceArchive = execFileSync('git', ['archive', '--format=tar', 'HEAD'], {
+        cwd: packageRoot,
+        stdio: 'pipe',
+      });
+      execFileSync('tar', ['-xf', '-', '-C', cleanCheckoutDirectory], {
+        input: sourceArchive,
+        stdio: ['pipe', 'pipe', 'pipe'],
+      });
+      symlinkSync(join(packageRoot, 'node_modules'), join(cleanCheckoutDirectory, 'node_modules'), 'dir');
+
+      execFileSync(packageManager, ['pack', '--pack-destination', packDirectory], {
+        cwd: cleanCheckoutDirectory,
+        stdio: 'pipe',
+      });
+      const archive = readdirSync(packDirectory).find((entry) => entry.endsWith('.tgz'));
+      expect(archive).toBeDefined();
+      execFileSync('tar', ['-xzf', join(packDirectory, archive as string), '-C', checkoutDirectory], {
+        stdio: 'pipe',
+      });
+
+      const packedPackage = join(checkoutDirectory, 'package');
+      expect(readdirSync(join(packedPackage, 'dist'))).toEqual(
+        expect.arrayContaining(['index.cjs', 'index.mjs', 'index.d.ts', 'convert.cjs', 'convert.mjs', 'convert.d.ts']),
+      );
+
+      const cjsSmoke = `
+        const Module = require('node:module');
+        const originalLoad = Module._load;
+        const calls = [];
+        Module._load = (request, parent, isMain) => request === 'piconvert'
+          ? { Converter: class {
+              import() { return this; }
+              export() { return this; }
+              run(...args) { calls.push(args); }
+            } }
+          : originalLoad(request, parent, isMain);
+        const api = require(process.argv[1]);
+        if (typeof api.convert !== 'function' || calls.length !== 1 || calls[0][0] !== './ai' || calls[0][1] !== './dest') {
+          process.exit(1);
+        }
+      `;
+      execFileSync(process.execPath, ['-e', cjsSmoke, packedPackage], { stdio: 'pipe' });
+
+      const esmSmoke = `
+        const moduleUrl = new URL(process.argv[1]);
+        const api = await import(moduleUrl.href);
+        if (typeof api.convert !== 'function') process.exit(1);
+      `;
+      execFileSync(process.execPath, ['--input-type=module', '-e', esmSmoke, pathToFileURL(join(packedPackage, 'dist/convert.mjs')).href], {
+        stdio: 'pipe',
+      });
+    } finally {
+      rmSync(cleanCheckoutDirectory, { recursive: true, force: true });
+      rmSync(packDirectory, { recursive: true, force: true });
+      rmSync(checkoutDirectory, { recursive: true, force: true });
+    }
   });
 
   it('legacy entryはrequire時の既存副作用を一度だけ実行する', async () => {

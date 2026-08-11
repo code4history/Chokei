@@ -4,6 +4,11 @@
   "description": "日本の石造物などを地図上に表示するためのアイコンをオープンデータで公開します。",
   "main": "index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "index.js",
+    "package.json"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -21,7 +26,9 @@
     "build": "tsc --noEmit && vite build",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "inkscape": "piconvert install"
+    "inkscape": "piconvert install",
+    "prepare": "pnpm run build",
+    "prepack": "pnpm run build"
   },
   "repository": {
     "type": "git",
