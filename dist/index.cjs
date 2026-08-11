@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const t=require("piconvert"),e=require("./convert-adapter.cjs"),r=()=>new t.Converter;e.convert({inputPath:"./ai",outputDirectory:"./dest",mode:"legacy",converterFactory:r});exports.convert=e.convert;

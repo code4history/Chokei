@@ -1,0 +1,7 @@
+# CI専用のpnpm設定。Chokei単独cloneのinstall直前にpnpm-workspace.yamlへコピーする。
+allowBuilds:
+  esbuild: true
+
+minimumReleaseAgeExclude:
+  - "@maplat/*"
+  - "@c4h/*"

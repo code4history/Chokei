@@ -1,0 +1,9 @@
+{
+  "input": {
+    "path": "valid.svg",
+    "config": "convert_config.js"
+  },
+  "outputs": ["converted.svg"],
+  "success": true,
+  "diagnostics": []
+}

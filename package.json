@@ -3,8 +3,29 @@
   "version": "2.0.1",
   "description": "日本の石造物などを地図上に表示するためのアイコンをオープンデータで公開します。",
   "main": "index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "index.js",
+    "package.json"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./index.js"
+    },
+    "./convert": {
+      "types": "./dist/convert.d.ts",
+      "import": "./dist/convert.mjs",
+      "require": "./dist/convert.cjs"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
     "inkscape": "piconvert install"
   },
   "repository": {
@@ -25,8 +46,17 @@
   "homepage": "https://github.com/code4history/Chokei#readme",
   "dependencies": {
     "fs-extra": "^11.1.0",
+    "piconvert": "0.5.2",
     "svg-to-png": "^4.0.0",
     "xmldom": "^0.6.0",
     "xpath": "^0.0.32"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "cross-env": "^10.1.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.5",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^3.2.6"
   }
 }
