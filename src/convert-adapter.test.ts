@@ -143,6 +143,7 @@ describe('convert adapter', () => {
       const sourceArchive = execFileSync('git', ['archive', '--format=tar', 'HEAD'], {
         cwd: packageRoot,
         stdio: 'pipe',
+        maxBuffer: 64 * 1024 * 1024,
       });
       execFileSync('tar', ['-xf', '-', '-C', cleanCheckoutDirectory], {
         input: sourceArchive,
