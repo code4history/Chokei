@@ -26,9 +26,7 @@
     "build": "tsc --noEmit && vite build",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "inkscape": "piconvert install",
-    "prepare": "pnpm run build",
-    "prepack": "pnpm run build"
+    "inkscape": "piconvert install"
   },
   "repository": {
     "type": "git",

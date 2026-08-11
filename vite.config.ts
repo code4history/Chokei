@@ -37,7 +37,7 @@ export default defineConfig({
       insertTypesEntry: true,
       staticImport: true,
       tsconfigPath: './tsconfig.json',
-      exclude: ['tests', 'node_modules'],
+      exclude: ['tests', 'node_modules', '**/*.test.ts'],
     }),
   ],
 });

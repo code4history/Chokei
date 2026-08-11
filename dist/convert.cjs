@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const r=require("./convert-adapter.cjs");exports.ConversionError=r.ConversionError;exports.convert=r.convert;exports.convertCli=r.convertCli;

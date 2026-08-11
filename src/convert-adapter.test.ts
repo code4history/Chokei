@@ -1,10 +1,10 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, readdirSync, rmSync, symlinkSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import {
   convert,
   convertCli,
@@ -117,8 +117,8 @@ describe('convert adapter', () => {
       './package.json': './package.json',
     });
     expect(packageJson.scripts.inkscape).toBe('piconvert install');
-    expect(packageJson.scripts.prepare).toBe('pnpm run build');
-    expect(packageJson.scripts.prepack).toBe('pnpm run build');
+    expect(packageJson.scripts.prepare).toBeUndefined();
+    expect(packageJson.scripts.prepack).toBeUndefined();
     expect(packageJson.files).toContain('dist');
 
     await expect(readFile(resolve(thisDirectory, '../index.js'), 'utf8')).resolves.toBe(
@@ -130,6 +130,12 @@ describe('convert adapter', () => {
     await expect(readFile(resolve(thisDirectory, '../dist/convert.cjs'), 'utf8')).resolves.toBeDefined();
     await expect(readFile(resolve(thisDirectory, '../dist/convert.mjs'), 'utf8')).resolves.toBeDefined();
     await expect(readFile(resolve(thisDirectory, '../dist/convert.d.ts'), 'utf8')).resolves.toBeDefined();
+    await expect(readFile(resolve(thisDirectory, '../dist/convert-adapter.cjs'), 'utf8')).resolves.toBeDefined();
+    await expect(readFile(resolve(thisDirectory, '../dist/convert-adapter.mjs'), 'utf8')).resolves.toBeDefined();
+    await expect(readFile(resolve(thisDirectory, '../dist/convert-adapter.d.ts'), 'utf8')).resolves.toBeDefined();
+    await expect(readFile(resolve(thisDirectory, '../dist/convert-adapter.test.d.ts'), 'utf8')).rejects.toMatchObject({
+      code: 'ENOENT',
+    });
   });
 
   it('packしたclean packageでCJS requireとESM importを解決する', () => {
@@ -149,8 +155,6 @@ describe('convert adapter', () => {
         input: sourceArchive,
         stdio: ['pipe', 'pipe', 'pipe'],
       });
-      symlinkSync(join(packageRoot, 'node_modules'), join(cleanCheckoutDirectory, 'node_modules'), 'dir');
-
       execFileSync(packageManager, ['pack', '--pack-destination', packDirectory], {
         cwd: cleanCheckoutDirectory,
         stdio: 'pipe',
@@ -166,32 +170,48 @@ describe('convert adapter', () => {
         expect.arrayContaining(['index.cjs', 'index.mjs', 'index.d.ts', 'convert.cjs', 'convert.mjs', 'convert.d.ts']),
       );
 
-      const cjsSmoke = `
-        const Module = require('node:module');
-        const originalLoad = Module._load;
-        const calls = [];
-        Module._load = (request, parent, isMain) => request === 'piconvert'
-          ? { Converter: class {
-              import() { return this; }
-              export() { return this; }
-              run(...args) { calls.push(args); }
-            } }
-          : originalLoad(request, parent, isMain);
-        const api = require(process.argv[1]);
-        if (typeof api.convert !== 'function' || calls.length !== 1 || calls[0][0] !== './ai' || calls[0][1] !== './dest') {
-          process.exit(1);
-        }
-      `;
-      execFileSync(process.execPath, ['-e', cjsSmoke, packedPackage], { stdio: 'pipe' });
+      const consumerDirectory = mkdtempSync(join(tmpdir(), 'chokei-m1-t2-consumer-'));
+      const consumerNodeModules = join(consumerDirectory, 'node_modules');
+      const packageLink = join(consumerNodeModules, 'chokei');
+      const piconvertStub = join(packedPackage, 'node_modules', 'piconvert');
+      try {
+        mkdirSync(consumerNodeModules, { recursive: true });
+        symlinkSync(packedPackage, packageLink, 'dir');
+        mkdirSync(piconvertStub, { recursive: true });
+        writeFileSync(join(piconvertStub, 'package.json'), '{"name":"piconvert","version":"0.0.0"}\n');
+        writeFileSync(join(piconvertStub, 'index.js'), `
+          const calls = globalThis.__chokeiCalls ??= [];
+          class Converter {
+            import() { return this; }
+            export() { return this; }
+            run(...args) { calls.push(args); }
+          }
+          module.exports = { Converter };
+        `);
 
-      const esmSmoke = `
-        const moduleUrl = new URL(process.argv[1]);
-        const api = await import(moduleUrl.href);
-        if (typeof api.convert !== 'function') process.exit(1);
-      `;
-      execFileSync(process.execPath, ['--input-type=module', '-e', esmSmoke, pathToFileURL(join(packedPackage, 'dist/convert.mjs')).href], {
-        stdio: 'pipe',
-      });
+        const cjsSmoke = `
+          const api = require('chokei');
+          const convertApi = require('chokei/convert');
+          const calls = globalThis.__chokeiCalls ?? [];
+          if (typeof api.convert !== 'function' || typeof convertApi.convert !== 'function' || calls.length !== 1 || calls[0][0] !== './ai' || calls[0][1] !== './dest') {
+            process.exit(1);
+          }
+        `;
+        execFileSync(process.execPath, ['-e', cjsSmoke], { cwd: consumerDirectory, stdio: 'pipe' });
+
+        const esmSmoke = `
+          const root = await import('chokei');
+          const convertApi = await import('chokei/convert');
+          const calls = globalThis.__chokeiCalls ?? [];
+          if (typeof root.convert !== 'function' || typeof convertApi.convert !== 'function' || calls.length !== 1) process.exit(1);
+        `;
+        execFileSync(process.execPath, ['--input-type=module', '-e', esmSmoke], {
+          cwd: consumerDirectory,
+          stdio: 'pipe',
+        });
+      } finally {
+        rmSync(consumerDirectory, { recursive: true, force: true });
+      }
     } finally {
       rmSync(cleanCheckoutDirectory, { recursive: true, force: true });
       rmSync(packDirectory, { recursive: true, force: true });
