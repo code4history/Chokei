@@ -1,8 +1,20 @@
-# 石造文化財アイコン 長慶(Chokei)
-日本の石造物などを地図上に表示するためのアイコンをオープンデータで公開します。  
-プロジェクト名は奈良に多くの石造物を残した奇豪、「[吉村長慶](https://bunkakouryu.or.jp/archives/zaidan_contents/%E5%AE%87%E5%AE%99%E8%8F%B4-%E5%90%89%E6%9D%91%E9%95%B7%E6%85%B6/)」から採ったものです。
+# Chokei (長慶) — Icons for Japanese Stone Cultural Properties
 
-### アイコン一覧
+**[Read this document in Japanese / 日本語で読む](README.ja.md)**
+
+Open data icons for showing Japanese stone monuments and related features on a map.
+
+The project name comes from [Yoshimura Chokei (吉村長慶)](https://bunkakouryu.or.jp/archives/zaidan_contents/%E5%AE%87%E5%AE%99%E8%8F%B4-%E5%90%89%E6%9D%91%E9%95%B7%E6%85%B6/), an eccentric benefactor who left many stone monuments in Nara.
+
+### Icon list
+
+The table below is generated automatically by `convert_config.js` into the
+icon-list HTML comment markers of this file. Do not edit it by hand.
+The icon type names and design notes are kept in Japanese because they are the
+proper names of Japanese stone monument categories; the Japanese README points here
+rather than keeping a second copy (ADR-0012: no duplicated maintenance of the same content).
+
+Column order: image / icon type (Japanese) / file name without extension / design intent (Japanese).
 
 <!--icon_all-->
 
@@ -76,61 +88,69 @@
 | ![坂](https://raw.githubusercontent.com/code4history/Chokei/main/png/slope.png)  | 坂  | slope  | 石造物ではないですが、観光案内POIデータセットで利用する関係で作成しました。街中の小さな坂のイメージです。  |
 <!--/icon_all-->
 
-### 提供フォーマット
+### Distributed formats
 
-[png](https://github.com/code4history/IconForStoneAssets/tree/main/png)および[svg](https://github.com/code4history/IconForStoneAssets/tree/main/svg)フォーマットで提供しています。
+The icons are distributed in [png](https://github.com/code4history/IconForStoneAssets/tree/main/png) and [svg](https://github.com/code4history/IconForStoneAssets/tree/main/svg).
 
-### バリエーション
+### Variations
 
-新規(new)以外のアイコンについては、要アクション(_action)、喪失(_missing)と画像添付なし(_noimg)を表すバリエーションアイコンを提供しています。
+Every icon except `new` also ships variations for "action required" (`_action`), "lost" (`_missing`) and "no photo attached" (`_noimg`).
 
-#### 例:青面金剛の場合
+#### Example: Shomen Kongo (青面金剛)
 
-| 画像                                                                                          | バリエーション | ファイル名(拡張子なし)   |
-|---------------------------------------------------------------------------------------------|---------|----------------|
-| ![ノーマル](https://raw.githubusercontent.com/code4history/Chokei/main/png/shomen.png)          | ノーマル | shomen         |
-| ![要アクション](https://raw.githubusercontent.com/code4history/Chokei/main/png/shomen_action.png) | 要アクション   | shomen_action  |
-| ![喪失](https://raw.githubusercontent.com/code4history/Chokei/main/png/shomen_missing.png)    | 喪失 | shomen_missing |
-| ![画像添付なし](https://raw.githubusercontent.com/code4history/Chokei/main/png/shomen_noimg.png)  | 画像添付なし | shomen_noimg   |
+| Image                                                                                         | Variation | File name (without extension) |
+|-----------------------------------------------------------------------------------------------|---------|----------------|
+| ![normal](https://raw.githubusercontent.com/code4history/Chokei/main/png/shomen.png)          | Normal | shomen         |
+| ![action required](https://raw.githubusercontent.com/code4history/Chokei/main/png/shomen_action.png) | Action required | shomen_action  |
+| ![lost](https://raw.githubusercontent.com/code4history/Chokei/main/png/shomen_missing.png)    | Lost | shomen_missing |
+| ![no photo](https://raw.githubusercontent.com/code4history/Chokei/main/png/shomen_noimg.png)  | No photo attached | shomen_noimg   |
 
-### ライセンス
-掲載されているアイコンは、[クリエイティブ・コモンズ【表示4.0国際】](https://creativecommons.org/licenses/by-sa/4.0/deed.en)ライセンスに従うかぎり、商用利用を含め、自由に複製または改変してご利用いただくことが可能です。詳細は利用規約をご確認ください。  
-アイコン利用の際は、利用プロダクトの説明文などの中で、本プロダクトの利用とクリエイティブ・コモンズ【表示4.0国際】ライセンスを表記するため、以下の一文を含めてください。  
+### License
 
-石造文化財アイコン: © 2022 T.N.K.Japan, Code for History, クリエイティブ・コモンズ・ライセンス（表示4.0 国際）
+The icons published here may be freely copied or modified, including for commercial use, as long as you comply with the [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/deed.en) license. See the terms of use for details.
 
-* WEBでの使用の場合は「クリエイティブ・コモンズ・ライセンス（表示4.0 国際）」部分にハイパーリンク https://creativecommons.org/licenses/by-sa/4.0/deed.en
-* 紙媒体での使用の場合は、末尾にURL [ https://creativecommons.org/licenses/by-sa/4.0/deed.en ]を追記
+When you use the icons, include the following sentence in the description of your product so that the use of this product and the Creative Commons Attribution 4.0 International license are credited:
 
-### 種別・バリエーション拡張
-アイコン種別やバリエーションの拡張は、以下の3通りで受け付けます。
+Icons for Stone Cultural Properties: © 2022 T.N.K.Japan, Code for History, Creative Commons License (Attribution 4.0 International)
 
-#### 拡張依頼 (コスト負担なし)
-Githubでのオープンソース/オープンデータプロジェクトとして提供していますので、拡張の希望はIssueを通じてご依頼ください。  
-ただし、要不要の判断、および製作にはコストがかかりますので、それも考慮に入れたうえで、お引き受けするか、また対応時期などは一任していただきます。
+* On the web, hyperlink the "Creative Commons License (Attribution 4.0 International)" part to https://creativecommons.org/licenses/by-sa/4.0/deed.en
+* In print, append the URL [ https://creativecommons.org/licenses/by-sa/4.0/deed.en ] at the end
 
-#### 拡張依頼 (コスト負担あり)
-上にも書きました通り、拡張にはコストがかかりますが、そのコストを負担していただけるならば、基本拡張対応いたします。  
-その場合、まずは拡張の方向性についてIssueを作成いただいたうえで、そのIssue番号などを添えて、kochizufan [@] code4history.dev までメールでお問い合わせ下さい。  
-基本、コストを負担いただけるならば、対応をお受けする方向で考えています (ただし、どのような要望が来るかわかりませんので、個別の案件に鑑みたうえでお断りする場合もあり得ます)。  
-また、コストを負担いただいても、その成果物はオープンデータの一部に加える形でしかお受けしません(その方のみのクローズデータを作成する案件はお受けしません)。  
-問い合わせれば必ずコスト負担を強いることはありませんので、コストを聞いて要望を取り下げても問題ございませんので、お気軽にお問い合わせください。
+### Requesting new types and variations
 
-#### 自分で拡張
-Githubでのオープンソース/オープンデータプロジェクトとして提供していますので、もちろん自分で拡張内容を作成いただいたうえで、プルリクエストを投げていただいてもかまいません。  
-その場合、既存データセットとの整合性は考慮してください。すなわち、
+New icon types and variations are accepted in the following three ways.
 
-* SVGとpngのデータセットを作成してください。
-* ノーマル、要アクション、喪失の既存バリエーションはすべて作成してください（あるいは、バリエーションの追加の場合は、既存アイコンすべてに対して作成してください）。
-* pngは、幅28ピクセルx高さ40ピクセルの32ビットカラーで作成してください。
-* ピンの足部分、バリエーションの感情アイコン部分など、既存アイコンから使えるベクタ部品は流用してテイストを合わせてください。
-* 完全に合わせるのは難しいかもしれませんが、既存アイコンとテイストを似せてください。あまりに異なる場合には、マージ許可の前に、Code for Historyや最初期版デザインのT.N.K.Japan様より手直しのディレクションが入る可能性があります。
+#### Request without covering the cost
 
-### 利用プロダクト例
-* [令和館林石造物悉皆調査](https://code4history.dev/TatebayashiStones/)
-* [奈良地蔵プロジェクト](https://code4history.dev/JizoProject/)
+This is an open source / open data project on GitHub, so please file an Issue with your request.
+Judging whether it is needed and producing it both cost effort, however, so whether we take it on and when we do so is left to our discretion.
 
-### アイコン作者ブログ記事
-最初期版のアイコンをデザインされた[T.N.K.Japan](https://www.tnkj.com/)様が、完成時のブログ記事を書かれています。
+#### Request while covering the cost
 
-* [石造物のマップ用ピンアイコン - T.N.K.Japan](https://www.tnkj.com/pin_icon/)
+As noted above, extensions cost effort. If you are willing to cover that cost, we will generally take the work on.
+In that case, first open an Issue about the direction of the extension, then contact kochizufan [@] code4history.dev by e-mail quoting the Issue number.
+In principle we intend to accept the work if the cost is covered (though depending on the request we may still decline).
+Even when the cost is covered, the result is only accepted as part of the open data set — we do not take on work that produces closed data for a single party.
+Asking does not commit you to anything: you are free to withdraw the request after hearing the cost, so please feel free to get in touch.
+
+#### Extending it yourself
+
+This is an open source / open data project on GitHub, so you are of course welcome to produce the extension yourself and send a pull request.
+In that case, please keep it consistent with the existing data set:
+
+* Produce both the SVG and the png data set.
+* Produce all of the existing variations — normal, action required and lost (or, when adding a new variation, produce it for every existing icon).
+* Produce the png at 28 pixels wide by 40 pixels high in 32-bit colour.
+* Reuse the vector parts that already exist — the foot of the pin, the emotion badge of each variation — so that the style matches.
+* Matching perfectly may be hard, but please keep the style close to the existing icons. If it differs too much, Code for History or T.N.K.Japan (who designed the earliest version) may direct revisions before the merge is approved.
+
+### Products using these icons
+
+* [Reiwa Tatebayashi Stone Monument Complete Survey](https://code4history.dev/TatebayashiStones/)
+* [Nara Jizo Project](https://code4history.dev/JizoProject/)
+
+### Blog article by the icon designer
+
+[T.N.K.Japan](https://www.tnkj.com/), who designed the earliest version of the icons, wrote a blog article when they were completed.
+
+* [Map pin icons for stone monuments - T.N.K.Japan](https://www.tnkj.com/pin_icon/)
