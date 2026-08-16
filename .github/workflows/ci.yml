@@ -34,3 +34,25 @@ jobs:
         run: pnpm run test
       - name: Build
         run: pnpm run build
+      # ---- Cycle 2 m1-t5: CI artifact 契約（設計 §6.2 の P1〜P5）----
+      # upload と download を同一 job で行う。∴ どの runtime で作られた配布物かと
+      # どの runtime で検証したかが 1 対 1 で対応する（outer rule-0014）。
+      - name: Pack
+        run: pnpm pack --pack-destination ci-artifact
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cycle2-chokei-package-node-${{ matrix.node }}
+          path: ci-artifact/
+      - name: Download package artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: cycle2-chokei-package-node-${{ matrix.node }}
+          path: ci-artifact-smoke/
+      - name: Artifact smoke
+        run: pnpm exec node ci/verify-artifact-smoke.mjs --artifact-dir=ci-artifact-smoke --report=ci-evidence/artifact-smoke-node-${{ matrix.node }}.txt
+      - name: Upload smoke report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cycle2-chokei-artifact-smoke-node-${{ matrix.node }}
+          path: ci-evidence/artifact-smoke-node-${{ matrix.node }}.txt
