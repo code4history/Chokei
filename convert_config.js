@@ -135,13 +135,13 @@ function build_table_html(language) {
 }
 
 /**
- * 言語1つ分の README のマーカー内側を差し替える（限定授権 A-5）。
- * 開始・終了マーカーが単独行としてちょうど1組ずつ、この順で無ければ非0で終了する（限定授権 A-6 後段）。
+ * マーカー欠落 guard（限定授権 A-6 後段）。
+ * 開始・終了マーカーが単独行としてちょうど1組ずつ、この順で無ければ非0で終了する。
  * 差し込み自体は reduce であり、マーカーが無いと黙って原文を書き戻す ∴ guard が無いと
  * 片方の README だけが更新される事故を検出できない（設計 §7.5.3）。
+ * **書き出しの前に全言語を検査する** — 1ファイルでも欠けていれば1文字も書かずに落とす。
  */
-function write_icon_table(language) {
-  const table_html = build_table_html(language);
+function assert_markers(language) {
   const readme = fs.readFileSync(language.file, "utf-8").split(/\r?\n/);
   const begins = readme.filter((line) => line === marker_begin).length;
   const ends = readme.filter((line) => line === marker_end).length;
@@ -152,6 +152,12 @@ function write_icon_table(language) {
     );
     process.exit(1);
   }
+}
+
+/** 言語1つ分の README のマーカー内側を差し替える（限定授権 A-5）。 */
+function write_icon_table(language) {
+  const table_html = build_table_html(language);
+  const readme = fs.readFileSync(language.file, "utf-8").split(/\r?\n/);
   let skip = false;
   const new_readme = readme.reduce((prev, line, index) => {
     if (skip) {
@@ -216,6 +222,8 @@ convert_set.forEach((line, index) => {
 });
 
 // 両言語の README を1つの実装で書き出す（限定授権 A-5）。
+// guard は全言語ぶんを先に通す（限定授権 A-6 後段。片方だけ書き換わる状態を作らない）。
+languages.forEach((language) => assert_markers(language));
 languages.forEach((language) => write_icon_table(language));
 
 // 表生成のみの経路（限定授権 A-6）。以降の PNG 変換は追跡下の png/ を書き換えるため通らない。
