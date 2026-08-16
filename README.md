@@ -97,7 +97,7 @@ The icons are distributed in [png](https://github.com/code4history/IconForStoneA
 
 Every icon except `new` also ships variations for "action required" (`_action`), "lost" (`_missing`) and "no photo attached" (`_noimg`).
 
-#### Example: Shomen Kongo (青面金剛)
+#### Example: Shōmen Kongō (青面金剛)
 
 | Image                                                                                         | Variation | File name (without extension) |
 |-----------------------------------------------------------------------------------------------|---------|----------------|
