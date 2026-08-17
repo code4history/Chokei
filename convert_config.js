@@ -118,7 +118,7 @@ function append_table_row(line, type) {
     if (!sets[line.set - 1]) sets[line.set - 1] = {};
     const htmls = sets[line.set - 1];
     if (!htmls[type]) htmls[type] = `##### ${type_strings[language.id][type]}\n\n${table_header[language.id]}\n`;
-    htmls[type] = `${htmls[type]}| ![${label}](https://raw.githubusercontent.com/code4history/Chokei/main/png/${line.base}.png)  | ${label}  | ${line.base}  | ${description}  |\n`;
+    htmls[type] = `${htmls[type]}| ![${label}](https://raw.githubusercontent.com/code4history/Chokei/master/png/${line.base}.png)  | ${label}  | ${line.base}  | ${description}  |\n`;
   });
 }
 
