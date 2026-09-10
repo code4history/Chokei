@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { execFileSync } from 'node:child_process';
+import { createRequire } from 'node:module';
 import { mkdirSync, mkdtempSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -242,5 +243,36 @@ describe('convert adapter', () => {
 
     expect(run).toHaveBeenCalledTimes(1);
     expect(run).toHaveBeenCalledWith('./ai', './dest');
+  });
+
+  it('scoped @xmldom/xmldom で fixture SVG を image/svg+xml として parse し、xpath 操作が通る', async () => {
+    const require = createRequire(import.meta.url);
+    const { DOMParser } = require('@xmldom/xmldom');
+    const { useNamespaces } = require('xpath');
+    const xml = await readFile(join(fixtureDirectory, 'valid.svg'), 'utf8');
+    const doc = new DOMParser().parseFromString(xml, 'image/svg+xml');
+    const select = useNamespaces({ a: 'http://www.w3.org/2000/svg' });
+    const root = select('/a:svg', doc, true);
+    expect(root).toBeDefined();
+    const rect = select('/a:svg/a:rect', doc, true);
+    expect(rect).toBeDefined();
+    root.removeChild(rect);
+    expect(doc.toString()).toContain('<svg');
+  });
+
+  it('依存分類: piconvert は dependencies、非配布 generator は devDependencies に固定する', async () => {
+    const packageJson = JSON.parse(await readFile(resolve(thisDirectory, '../package.json'), 'utf8')) as {
+      dependencies: Record<string, string>;
+      devDependencies: Record<string, string>;
+    };
+    expect(packageJson.dependencies.piconvert).toBeDefined();
+    for (const name of ['@xmldom/xmldom', 'xpath', 'fs-extra', 'sharp']) {
+      expect(packageJson.devDependencies[name]).toBeDefined();
+      expect(packageJson.dependencies[name]).toBeUndefined();
+    }
+    expect(packageJson.dependencies['svg-to-png']).toBeUndefined();
+    expect(packageJson.dependencies.xmldom).toBeUndefined();
+    expect(packageJson.devDependencies['svg-to-png']).toBeUndefined();
+    expect(packageJson.devDependencies.xmldom).toBeUndefined();
   });
 });

@@ -1,8 +1,13 @@
 # CI専用のpnpm設定。Chokei単独cloneのinstall直前にpnpm-workspace.yamlへコピーする。
 allowBuilds:
   esbuild: true
-  phantomjs-prebuilt: false
-  sharp: false
+
+# piconvert が sharp ^0.31.1 を要求し、Dependabot の sharp high 3件（GHSA-rgj7-g3m4-5g8c
+# / GHSA-f88m-g3jw-g9cj / GHSA-54xq-cgqr-rpm3）を解消する版へ解決できないため、
+# patched version（0.35.4）へ固定する（oct26-m5-t8 設計 §4 P0）。
+# pnpm 11 は package.json の pnpm.overrides を読まないため、ここ（workspace 設定）へ置く。
+overrides:
+  sharp: "0.35.4"
 
 minimumReleaseAgeExclude:
   - "@maplat/*"

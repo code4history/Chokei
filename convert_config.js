@@ -1,7 +1,7 @@
 const xpath = require('xpath');
-const dom = require('xmldom').DOMParser;
+const { DOMParser } = require('@xmldom/xmldom');
 const fs = require("fs-extra");
-const svg_to_png = require('svg-to-png');
+const sharp = require('sharp');
 const path = require("node:path");
 
 const convert_set = [
@@ -198,7 +198,7 @@ convert_set.forEach((line, index) => {
   const xml = fs.readFileSync(`./original/${original}.svg`, "utf-8");
   l_patterns.forEach((pattern) => {
     const suffix = pattern.suffix;
-    const doc = new dom().parseFromString(xml);
+    const doc = new DOMParser().parseFromString(xml, 'image/svg+xml');
     const select = xpath.useNamespaces({
       "a": "http://www.w3.org/2000/svg"
     });
@@ -229,7 +229,17 @@ languages.forEach((language) => write_icon_table(language));
 // 表生成のみの経路（限定授権 A-6）。以降の PNG 変換は追跡下の png/ を書き換えるため通らない。
 if (readme_only) return;
 
-svg_to_png.convert(convert_src, path.resolve(__dirname, "./png"), {defaultWidth: 28, defaultHeight: 40}) // async, returns promise
+// SVG→PNG 変換を sharp（librsvg 経由）で行う（phantomjs 系 svg-to-png の置換。設計 oct26-m5-t8 §5）。
+// 出力は追跡下の png/<base>.png と同名・同寸法（28×40）にする。
+async function convert_to_png() {
+  const out_dir = path.resolve(__dirname, "./png");
+  for (const svg_path of convert_src) {
+    const png_path = path.join(out_dir, `${path.basename(svg_path, ".svg")}.png`);
+    await sharp(svg_path).resize(28, 40).png().toFile(png_path);
+  }
+}
+
+convert_to_png()
   .then( function(){
     // Do tons of stuff
   });
