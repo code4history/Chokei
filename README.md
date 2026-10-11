@@ -108,13 +108,13 @@ Every icon except `new` also ships variations for "action required" (`_action`),
 
 ### License
 
-The icons published here may be freely copied or modified, including for commercial use, as long as you comply with the [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/deed.en) license. See the terms of use for details.
+The icons published here may be freely copied or modified, including for commercial use, as long as you comply with the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/deed.en) license. If you publish modified icons, you must release them under the same CC BY-SA 4.0 license. See the terms of use for details.
 
-When you use the icons, include the following sentence in the description of your product so that the use of this product and the Creative Commons Attribution 4.0 International license are credited:
+When you use the icons, include the following sentence in the description of your product so that the use of this product and the Creative Commons Attribution-ShareAlike 4.0 International license are credited:
 
-Icons for Stone Cultural Properties: © 2022 T.N.K.Japan, Code for History, Creative Commons License (Attribution 4.0 International)
+Icons for Stone Cultural Properties: © 2022 T.N.K.Japan, Code for History, Creative Commons License (Attribution-ShareAlike 4.0 International)
 
-* On the web, hyperlink the "Creative Commons License (Attribution 4.0 International)" part to https://creativecommons.org/licenses/by-sa/4.0/deed.en
+* On the web, hyperlink the "Creative Commons License (Attribution-ShareAlike 4.0 International)" part to https://creativecommons.org/licenses/by-sa/4.0/deed.en
 * In print, append the URL [ https://creativecommons.org/licenses/by-sa/4.0/deed.en ] at the end
 
 ### Requesting new types and variations
