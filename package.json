@@ -26,6 +26,7 @@
     "build": "tsc --noEmit && vite build",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
+    "lint": "eslint src tests",
     "inkscape": "piconvert install",
     "verify:renderer": "node scripts/verify-renderer-equivalence.mjs"
   },
@@ -49,9 +50,14 @@
     "piconvert": "0.5.2"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/node": "^25.5.2",
+    "@typescript-eslint/eslint-plugin": "^8.66.0",
+    "@typescript-eslint/parser": "^8.66.0",
     "@xmldom/xmldom": "^0.9.12",
     "cross-env": "^10.1.0",
+    "eslint": "^10.10.0",
+    "eslint-config-prettier": "^10.1.8",
     "fs-extra": "^11.1.0",
     "sharp": "^0.35.4",
     "typescript": "^5.9.3",

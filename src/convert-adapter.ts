@@ -65,7 +65,7 @@ const validateConfig = (configPath: string | undefined): void => {
 
   try {
     // 設定を実行せず、構文だけを確認する。既存の generator の副作用を発生させない。
-    new Function('require', 'module', 'exports', source); // eslint-disable-line no-new-func
+    new Function('require', 'module', 'exports', source);
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     throw new ConversionError(`設定が不正です: ${message}`, 2);
