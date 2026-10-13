@@ -5,9 +5,10 @@ allowBuilds:
 # piconvert が sharp ^0.31.1 を要求し、Dependabot の sharp high 3件（GHSA-rgj7-g3m4-5g8c
 # / GHSA-f88m-g3jw-g9cj / GHSA-54xq-cgqr-rpm3）を解消する版へ解決できないため、
 # patched version（0.35.4）へ固定する（oct26-m5-t8 設計 §4 P0）。
+# 0.35.5 へ上げて GHSA-wq5f-xc86-pv6w（librsvg・high）も閉じる（nov26-m9-t2 MAJ-1）。
 # pnpm 11 は package.json の pnpm.overrides を読まないため、ここ（workspace 設定）へ置く。
 overrides:
-  sharp: "0.35.4"
+  sharp: "0.35.5"
 
 minimumReleaseAgeExclude:
   - "@maplat/*"
