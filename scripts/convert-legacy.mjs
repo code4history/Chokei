@@ -23,7 +23,9 @@ const USAGE = `使い方: pnpm run convert -- [入力ディレクトリ] [出力
 引数を省略した場合は ./ai を ./dest へ変換します。
 実際の変換には Inkscape が必要です（pnpm run inkscape）。`;
 
-const args = process.argv.slice(2);
+// pnpm 11 は `pnpm run convert -- a b` の `--` をそのまま渡すので、先頭の `--` は捨てる。
+const rawArgs = process.argv.slice(2);
+const args = rawArgs[0] === '--' ? rawArgs.slice(1) : rawArgs;
 if (args.includes('--help') || args.includes('-h')) {
   console.log(USAGE);
   process.exit(0);
