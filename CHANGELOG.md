@@ -2,6 +2,13 @@
 
 このプロジェクトの主な変更を記録します。版数は [Semantic Versioning](https://semver.org/) に従います。Chokei は npm に公開せず、GitHub のタグと Release で版を示します。
 
+## [未リリース]
+
+### Changed
+- 入口の読み込みで変換が走らなくなった。変換は `pnpm run convert` で行う（10月 SR-A1-CHK-1）
+- piconvert を実行時の依存から外した（devDependencies へ移動。11月 SR-NOV26-A1-3）
+- npm に出さないことを package.json で明示した（`"private": true`）
+
 ## [2.0.2] - 2026-10-05
 
 ### Changed

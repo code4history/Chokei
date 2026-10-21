@@ -47,8 +47,9 @@ const push = (label, ok, detail) => results.push([label, Boolean(ok), String(det
 const pkgDir = path.join(process.cwd(), "node_modules", "chokei");
 
 // (a) CommonJS の解決が index.js を経由すること。
-//     実行はしない — dist/index.cjs は読み込み時に convert() を起動する副作用を持ち、
-//     外部 runtime 依存 piconvert を要する。∴ exports map 経由の「解決」で示す。
+//     dist/index.cjs は読み込み時に convert() を起動しない（10月 SR-A1-CHK-1）ため、
+//     piconvert を staging に置かなくても解決・実行できる。ここでは exports map 経由の
+//     「解決」を示す（実行は (b) の ./convert subpath で行う）。
 try {
   const resolved = require.resolve("chokei");
   // 解決先が staging（＝配布された tarball の中身）であることも同時に要求する。

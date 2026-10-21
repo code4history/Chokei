@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
-import { mkdirSync, mkdtempSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, rmSync, symlinkSync } from 'node:fs';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
@@ -100,10 +100,13 @@ describe('convert adapter', () => {
       exports: Record<string, Record<string, string> | string>;
       scripts: Record<string, string>;
       files: string[];
+      private?: boolean;
     };
 
     expect(packageJson.main).toBe('index.js');
     expect(packageJson.types).toBe('./dist/index.d.ts');
+    // npm に出さないことを package.json で明示する（github-tag-only）。
+    expect(packageJson.private).toBe(true);
     expect(packageJson.exports).toEqual({
       '.': {
         types: './dist/index.d.ts',
@@ -118,6 +121,7 @@ describe('convert adapter', () => {
       './package.json': './package.json',
     });
     expect(packageJson.scripts.inkscape).toBe('piconvert install');
+    expect(packageJson.scripts.convert).toBe('node scripts/convert-legacy.mjs');
     expect(packageJson.scripts.prepare).toBeUndefined();
     expect(packageJson.scripts.prepack).toBeUndefined();
     expect(packageJson.files).toContain('dist');
@@ -171,40 +175,26 @@ describe('convert adapter', () => {
         expect.arrayContaining(['index.cjs', 'index.mjs', 'index.d.ts', 'convert.cjs', 'convert.mjs', 'convert.d.ts']),
       );
 
+      // piconvert は devDependencies であり、利用者側には導入されない。
+      // ∴ staging に piconvert を置かずに require / import が通らなければならない。
       const consumerDirectory = mkdtempSync(join(tmpdir(), 'chokei-m1-t2-consumer-'));
       const consumerNodeModules = join(consumerDirectory, 'node_modules');
       const packageLink = join(consumerNodeModules, 'chokei');
-      const piconvertStub = join(packedPackage, 'node_modules', 'piconvert');
       try {
         mkdirSync(consumerNodeModules, { recursive: true });
         symlinkSync(packedPackage, packageLink, 'dir');
-        mkdirSync(piconvertStub, { recursive: true });
-        writeFileSync(join(piconvertStub, 'package.json'), '{"name":"piconvert","version":"0.0.0"}\n');
-        writeFileSync(join(piconvertStub, 'index.js'), `
-          const calls = globalThis.__chokeiCalls ??= [];
-          class Converter {
-            import() { return this; }
-            export() { return this; }
-            run(...args) { calls.push(args); }
-          }
-          module.exports = { Converter };
-        `);
 
         const cjsSmoke = `
           const api = require('chokei');
           const convertApi = require('chokei/convert');
-          const calls = globalThis.__chokeiCalls ?? [];
-          if (typeof api.convert !== 'function' || typeof convertApi.convert !== 'function' || calls.length !== 1 || calls[0][0] !== './ai' || calls[0][1] !== './dest') {
-            process.exit(1);
-          }
+          if (typeof api.convert !== 'function' || typeof convertApi.convert !== 'function') process.exit(1);
         `;
         execFileSync(process.execPath, ['-e', cjsSmoke], { cwd: consumerDirectory, stdio: 'pipe' });
 
         const esmSmoke = `
           const root = await import('chokei');
           const convertApi = await import('chokei/convert');
-          const calls = globalThis.__chokeiCalls ?? [];
-          if (typeof root.convert !== 'function' || typeof convertApi.convert !== 'function' || calls.length !== 1) process.exit(1);
+          if (typeof root.convert !== 'function' || typeof convertApi.convert !== 'function') process.exit(1);
         `;
         execFileSync(process.execPath, ['--input-type=module', '-e', esmSmoke], {
           cwd: consumerDirectory,
@@ -220,7 +210,7 @@ describe('convert adapter', () => {
     }
   });
 
-  it('legacy entryはrequire時の既存副作用を一度だけ実行する', async () => {
+  it('入口を import しても変換を実行せず、CWD に dest/ を作らない', async () => {
     const run = vi.fn();
     vi.doMock('piconvert', () => ({
       Converter: class {
@@ -238,11 +228,30 @@ describe('convert adapter', () => {
       },
     }));
 
-    vi.resetModules();
-    await import('./index');
+    // CWD を一時ディレクトリに変えて import する。旧来の「import で ./dest を作る」
+    // 挙動が残っていれば、ここで dest/ が生まれる（＝赤）。
+    const originalCwd = process.cwd();
+    const temporaryCwd = mkdtempSync(join(tmpdir(), 'chokei-entry-'));
+    process.chdir(temporaryCwd);
+    try {
+      vi.resetModules();
+      await import('./index');
+      // 副作用の実行は非同期（void convert(...)）なので、イベントループを1巡させる。
+      await new Promise((resolvePromise) => setTimeout(resolvePromise, 50));
 
-    expect(run).toHaveBeenCalledTimes(1);
-    expect(run).toHaveBeenCalledWith('./ai', './dest');
+      expect(run).not.toHaveBeenCalled();
+      expect(existsSync(join(temporaryCwd, 'dest'))).toBe(false);
+    } finally {
+      process.chdir(originalCwd);
+      rmSync(temporaryCwd, { recursive: true, force: true });
+    }
+  });
+
+  it('配布入口 dist/index.mjs・dist/index.cjs は piconvert を参照しない', async () => {
+    for (const entry of ['index.mjs', 'index.cjs']) {
+      const source = await readFile(resolve(thisDirectory, '../dist', entry), 'utf8');
+      expect(source).not.toMatch(/piconvert/);
+    }
   });
 
   it('scoped @xmldom/xmldom で fixture SVG を image/svg+xml として parse し、xpath 操作が通る', async () => {
@@ -260,18 +269,19 @@ describe('convert adapter', () => {
     expect(doc.toString()).toContain('<svg');
   });
 
-  it('依存分類: piconvert は dependencies、非配布 generator は devDependencies に固定する', async () => {
+  it('依存分類: piconvert は実行時依存に含めず devDependencies に置く', async () => {
     const packageJson = JSON.parse(await readFile(resolve(thisDirectory, '../package.json'), 'utf8')) as {
-      dependencies: Record<string, string>;
+      dependencies?: Record<string, string>;
       devDependencies: Record<string, string>;
     };
-    expect(packageJson.dependencies.piconvert).toBeDefined();
+    expect(packageJson.dependencies?.piconvert).toBeUndefined();
+    expect(packageJson.devDependencies.piconvert).toBeDefined();
     for (const name of ['@xmldom/xmldom', 'xpath', 'fs-extra', 'sharp']) {
       expect(packageJson.devDependencies[name]).toBeDefined();
-      expect(packageJson.dependencies[name]).toBeUndefined();
+      expect(packageJson.dependencies?.[name]).toBeUndefined();
     }
-    expect(packageJson.dependencies['svg-to-png']).toBeUndefined();
-    expect(packageJson.dependencies.xmldom).toBeUndefined();
+    expect(packageJson.dependencies?.['svg-to-png']).toBeUndefined();
+    expect(packageJson.dependencies?.xmldom).toBeUndefined();
     expect(packageJson.devDependencies['svg-to-png']).toBeUndefined();
     expect(packageJson.devDependencies.xmldom).toBeUndefined();
   });

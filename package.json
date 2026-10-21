@@ -2,6 +2,7 @@
   "name": "chokei",
   "version": "2.0.2",
   "description": "日本の石造物などを地図上に表示するためのアイコンをオープンデータで公開します。",
+  "private": true,
   "main": "index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -28,6 +29,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint src tests",
     "inkscape": "piconvert install",
+    "convert": "node scripts/convert-legacy.mjs",
     "verify:renderer": "node scripts/verify-renderer-equivalence.mjs"
   },
   "repository": {
@@ -46,9 +48,6 @@
     "url": "https://github.com/code4history/Chokei/issues"
   },
   "homepage": "https://github.com/code4history/Chokei#readme",
-  "dependencies": {
-    "piconvert": "0.5.2"
-  },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "^26.6.5",
@@ -59,6 +58,7 @@
     "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
     "fs-extra": "^11.1.0",
+    "piconvert": "0.5.2",
     "sharp": "^0.35.4",
     "typescript": "^6.0.3",
     "vite": "^7.3.5",

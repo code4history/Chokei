@@ -1,1 +1,1 @@
-import{Converter as o}from"piconvert";import{convert as r}from"./convert-adapter.mjs";const t=()=>new o;r({inputPath:"./ai",outputDirectory:"./dest",mode:"legacy",converterFactory:t});export{r as convert};
+import{convert as e}from"./convert-adapter.mjs";export{e as convert};
