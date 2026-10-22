@@ -1,16 +1,6 @@
-import { Converter } from 'piconvert';
-import { convert, type ConverterLike } from './convert-adapter';
-
-const legacyConverterFactory = (): ConverterLike => new Converter() as unknown as ConverterLike;
-
-// v2.0.1互換: package root の require/import 時に既存の変換を一度実行する。
-void convert({
-  inputPath: './ai',
-  outputDirectory: './dest',
-  mode: 'legacy',
-  converterFactory: legacyConverterFactory,
-});
-
+// パッケージの入口。読み込むだけで変換を実行しない（10月 SR-A1-CHK-1）。
+// アイコンの変換は `pnpm run convert`（scripts/convert-legacy.mjs）で明示的に行う。
+// piconvert は実行時依存ではないため、ここから import しない。
 export { convert } from './convert-adapter';
 export type {
   ConverterFactory,
