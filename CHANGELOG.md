@@ -2,7 +2,7 @@
 
 このプロジェクトの主な変更を記録します。版数は [Semantic Versioning](https://semver.org/) に従います。Chokei は npm に公開せず、GitHub のタグと Release で版を示します。
 
-## [未リリース]
+## [2.1.0-rc.1] - 2026-10-26
 
 ### Changed
 - 入口の読み込みで変換が走らなくなった。変換は `pnpm run convert` で行う（10月 SR-A1-CHK-1）
