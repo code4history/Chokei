@@ -61,7 +61,7 @@
     "piconvert": "0.5.2",
     "sharp": "^0.35.4",
     "typescript": "^6.0.3",
-    "vite": "^7.3.5",
+    "vite": "^7.3.7",
     "vite-plugin-dts": "^5.1.0",
     "vitest": "^5.0.4",
     "xpath": "^0.0.35"
