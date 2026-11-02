@@ -9,6 +9,11 @@ allowBuilds:
 # pnpm 11 は package.json の pnpm.overrides を読まないため、ここ（workspace 設定）へ置く。
 overrides:
   sharp: "0.35.5"
+  # eslint の系が引く minimatch: <11.0.1 の medium（GHSA-g3hv-75wg-m249）。修正版は 11 系だけ。
+  # glob 10・11 は minimatch 11 と組めないので、全体ではなく eslint の系の親に限って上げる
+  "eslint>minimatch": "^11.0.1"
+  "@eslint/config-array>minimatch": "^11.0.1"
+  "@typescript-eslint/typescript-estree>minimatch": "^11.0.1"
 
 minimumReleaseAgeExclude:
   - "@maplat/*"
