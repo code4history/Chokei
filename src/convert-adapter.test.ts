@@ -15,6 +15,11 @@ import {
 } from './convert-adapter';
 
 const thisDirectory = dirname(fileURLToPath(import.meta.url));
+
+// pnpm pack を子プロセスで回すテストの時間の上限。既定の 5 秒は高負荷の環境で揺れた。
+// 値は手元で 5 回測った最長の 3 倍を 5 秒刻みに丸めたもの（下限 10 秒）。値 = max(10000, ceil(3T / 5000) × 5000)
+// 測定: 2026-11-07・最長 741 ms
+const PACK_TIMEOUT_MS = 10000;
 const fixtureDirectory = resolve(thisDirectory, '../tests/fixtures');
 const temporaryDirectories: string[] = [];
 
@@ -143,7 +148,7 @@ describe('convert adapter', () => {
     });
   });
 
-  it('packしたclean packageでCJS requireとESM importを解決する', () => {
+  it('packしたclean packageでCJS requireとESM importを解決する', { timeout: PACK_TIMEOUT_MS }, () => {
     const packageRoot = resolve(thisDirectory, '..');
     const cleanCheckoutDirectory = mkdtempSync(join(tmpdir(), 'chokei-m1-t2-clean-'));
     const packDirectory = mkdtempSync(join(tmpdir(), 'chokei-m1-t2-pack-'));
