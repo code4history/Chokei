@@ -234,7 +234,7 @@ async function main() {
   fs.writeFileSync(reportPath, JSON.stringify(evidence, null, 2) + "\n");
 
   const lines = [
-    "# Chokei renderer equivalence report (oct26-m5-t8)",
+    "# Chokei renderer equivalence report",
     `total: ${total}`,
     `dim_mismatch: ${dimMismatch}`,
     `silhouette (mask_frac) max: ${(maskFracMax * 100).toFixed(3)}% (gate ≤ 2%)`,

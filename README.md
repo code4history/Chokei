@@ -13,7 +13,7 @@ icon-list HTML comment markers of this file. Do not edit it by hand.
 The same table is generated in Japanese into [README.ja.md](README.ja.md).
 Both languages come from a single source of truth — the `convert_set` table in
 `convert_config.js` — so neither copy is maintained by hand
-(ADR-0012: no duplicated maintenance of the same content).
+(the same content is never maintained twice).
 
 Column order: image / icon type / file name without extension / design intent.
 
