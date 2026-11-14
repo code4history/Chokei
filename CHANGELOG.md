@@ -2,6 +2,11 @@
 
 このプロジェクトの主な変更を記録します。版数は [Semantic Versioning](https://semver.org/) に従います。Chokei は npm に公開せず、GitHub のタグと Release で版を示します。
 
+## [Unreleased]
+
+### Added
+- `LICENSE` を追加（#17）。`package.json` と README が示す CC BY-SA 4.0 の本文（legalcode）を置いた
+
 ## [2.1.0] - 2026-11-02
 
 2.1.0-rc.1 と同じ内容の正式版です（版番号のみ変更）。変更点は 2.1.0-rc.1 までの各項を参照してください。
@@ -9,8 +14,8 @@
 ## [2.1.0-rc.1] - 2026-10-26
 
 ### Changed
-- 入口の読み込みで変換が走らなくなった。変換は `pnpm run convert` で行う（10月 SR-A1-CHK-1）
-- piconvert を実行時の依存から外した（devDependencies へ移動。11月 SR-NOV26-A1-3）
+- 入口の読み込みで変換が走らなくなった。変換は `pnpm run convert` で行う
+- piconvert を実行時の依存から外した（devDependencies へ移動）
 - npm に出さないことを package.json で明示した（`"private": true`）
 
 ## [2.0.2] - 2026-10-05
