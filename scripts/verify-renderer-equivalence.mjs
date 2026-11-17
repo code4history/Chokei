@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * scripts/verify-renderer-equivalence.mjs — oct26-m5-t8 設計 §5.2
+ * scripts/verify-renderer-equivalence.mjs — sharp で描いた PNG と追跡下の PNG の等価性の判定
  *
  * 追跡下の SVG（svg/<base>.svg 177 件）を sharp（librsvg 経由）で 28×40 に描画し、
  * 追跡下の PNG（png/<base>.png 177 件）と「機能・構造等価性」を機械判定する。
  * byte 完全一致は別エンジン間で 0/177（実測）のため廃止し、実測値に基づく許容基準を使う。
  *
- *   許容基準（設計 §5.2）:
+ *   許容基準:
  *     1. 寸法: 28×40 完全一致（許容差 0）
  *     2. silhouette: 二値 alpha mask（閾値128）の不一致画素率 ≤ 2%
  *     3. 大色差: 画素ごと RGB 最大チャネル差が 30 を超える画素の割合 ≤ 5%
@@ -74,7 +74,7 @@ async function decodePng(pngBuffer) {
   return { data, width: info.width, height: info.height, channels: info.channels };
 }
 
-/** 2 つの RGBA 生ピクセル（同寸法）を比較し、設計 §5.2 の指標を返す。 */
+/** 2 つの RGBA 生ピクセル（同寸法）を比較し、冒頭の許容基準の指標を返す。 */
 function comparePixels(existing, rendered) {
   const n = existing.width * existing.height;
   let maskMismatch = 0;
@@ -212,7 +212,6 @@ async function main() {
 
   const evidence = {
     meta: {
-      delegation_token: "OCT26-IMPL-M5T8-KONARA",
       generated_at: new Date().toISOString(),
       node: process.version,
       renderer: sharpMeta,
