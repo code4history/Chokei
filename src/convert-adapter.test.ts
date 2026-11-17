@@ -24,7 +24,7 @@ const fixtureDirectory = resolve(thisDirectory, '../tests/fixtures');
 const temporaryDirectories: string[] = [];
 
 const createTemporaryOutputDirectory = async (): Promise<string> => {
-  const directory = await mkdtemp(join(tmpdir(), 'chokei-m1-t2-'));
+  const directory = await mkdtemp(join(tmpdir(), 'chokei-convert-'));
   temporaryDirectories.push(directory);
   return directory;
 };
@@ -150,9 +150,9 @@ describe('convert adapter', () => {
 
   it('packしたclean packageでCJS requireとESM importを解決する', { timeout: PACK_TIMEOUT_MS }, () => {
     const packageRoot = resolve(thisDirectory, '..');
-    const cleanCheckoutDirectory = mkdtempSync(join(tmpdir(), 'chokei-m1-t2-clean-'));
-    const packDirectory = mkdtempSync(join(tmpdir(), 'chokei-m1-t2-pack-'));
-    const checkoutDirectory = mkdtempSync(join(tmpdir(), 'chokei-m1-t2-checkout-'));
+    const cleanCheckoutDirectory = mkdtempSync(join(tmpdir(), 'chokei-convert-clean-'));
+    const packDirectory = mkdtempSync(join(tmpdir(), 'chokei-convert-pack-'));
+    const checkoutDirectory = mkdtempSync(join(tmpdir(), 'chokei-convert-checkout-'));
     const packageManager = process.env.PNPM_BIN ?? 'pnpm';
 
     try {
@@ -182,7 +182,7 @@ describe('convert adapter', () => {
 
       // piconvert は devDependencies であり、利用者側には導入されない。
       // ∴ staging に piconvert を置かずに require / import が通らなければならない。
-      const consumerDirectory = mkdtempSync(join(tmpdir(), 'chokei-m1-t2-consumer-'));
+      const consumerDirectory = mkdtempSync(join(tmpdir(), 'chokei-convert-consumer-'));
       const consumerNodeModules = join(consumerDirectory, 'node_modules');
       const packageLink = join(consumerNodeModules, 'chokei');
       try {

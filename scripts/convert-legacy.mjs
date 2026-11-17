@@ -2,7 +2,7 @@
 /**
  * scripts/convert-legacy.mjs — アイコンの変換を明示的に実行する入口。
  *
- * 10月 SR-A1-CHK-1 の対応で、パッケージ入口（dist/index.mjs / dist/index.cjs）の
+ * 読み込みで変換を走らせない修正で、パッケージ入口（dist/index.mjs / dist/index.cjs）の
  * 読み込み時に走っていた変換をここへ移した。旧挙動（import で ./ai を ./dest へ変換）に
  * 頼る箇所は残さない。piconvert は devDependencies なので、`Converter` を factory として
  * 明示的に渡す。

@@ -60,7 +60,7 @@ const patterns = [
   {"id": "noimg", "suffix": "_noimg", "remove": ["要調査", "消失"]}
 ];
 
-// 種別の節見出し。言語別に「完成したラベル」を持つ（設計 §7.6.5 / 限定授権 A-2）。
+// 種別の節見出し。言語別に「完成したラベル」を持つ。
 // 現行は語幹（"石造物"）へ生成側で「アイコン」を連結していたが、英語では
 // "Non-stone-monument" のように複合語のハイフンが要るなど連結が成立しない
 // ∴ 生成側での継ぎ足しをやめ、表側へ完成形を置く。
@@ -77,13 +77,13 @@ const type_strings = {
   }
 };
 
-// 集合の見出し（設計 §7.6.5 / 限定授権 A-4）。
+// 集合の見出し。
 const set_strings = {
   "ja": (index) => `第${index + 1}弾`,
   "en": (index) => `Series ${index + 1}`
 };
 
-// 言語ごとの書き出し先と、行の中身を引く key（限定授権 A-5）。
+// 言語ごとの書き出し先と、行の中身を引く key。
 // 言語別の実装を作らず、1つの実装がこの表を引いて両言語を組み立てる。
 const languages = [
   { "id": "en", "file": "./README.md", "rename_key": "rename_en", "description_key": "description_en" },
@@ -93,7 +93,7 @@ const languages = [
 const table_htmls = {};
 const convert_src = [];
 
-// 列見出し（設計 §7.6.5 / 限定授権 A-3）。
+// 列見出し。
 const table_header = {
   "ja": `| 画像  | アイコン種別  | ファイル名(拡張子なし)  | デザイン方向性  |
 |---------|---------|---------|---------|`,
@@ -101,14 +101,14 @@ const table_header = {
 |---------|---------|---------|---------|`
 };
 
-// 表生成のみを実行する経路（限定授権 A-6）。
-// 追跡下の svg/ png/ を再生成せずに冪等性を測るために要る（設計 §7.5.3）。
+// 表生成のみを実行する経路。
+// 追跡下の svg/ png/ を再生成せずに冪等性を測るために要る。
 const readme_only = process.argv.includes("--readme-only");
 
 const marker_begin = "<!--icon_all-->";
 const marker_end = "<!--/icon_all-->";
 
-/** 1行分を全言語の表へ足す（限定授権 A-5。言語ごとに別実装を作らない）。 */
+/** 1行分を全言語の表へ足す（言語ごとに別実装を作らない）。 */
 function append_table_row(line, type) {
   languages.forEach((language) => {
     const label = line[language.rename_key];
@@ -122,7 +122,7 @@ function append_table_row(line, type) {
   });
 }
 
-/** 言語1つ分の表 HTML を組み立てる（限定授権 A-4 / A-5）。 */
+/** 言語1つ分の表 HTML を組み立てる。 */
 function build_table_html(language) {
   const sets = table_htmls[language.id] || [];
   return sets.reduce((prev, htmls, index) => {
@@ -135,10 +135,10 @@ function build_table_html(language) {
 }
 
 /**
- * マーカー欠落 guard（限定授権 A-6 後段）。
+ * マーカー欠落 guard。
  * 開始・終了マーカーが単独行としてちょうど1組ずつ、この順で無ければ非0で終了する。
  * 差し込み自体は reduce であり、マーカーが無いと黙って原文を書き戻す ∴ guard が無いと
- * 片方の README だけが更新される事故を検出できない（設計 §7.5.3）。
+ * 片方の README だけが更新される事故を検出できない。
  * **書き出しの前に全言語を検査する** — 1ファイルでも欠けていれば1文字も書かずに落とす。
  */
 function assert_markers(language) {
@@ -154,7 +154,7 @@ function assert_markers(language) {
   }
 }
 
-/** 言語1つ分の README のマーカー内側を差し替える（限定授権 A-5）。 */
+/** 言語1つ分の README のマーカー内側を差し替える。 */
 function write_icon_table(language) {
   const table_html = build_table_html(language);
   const readme = fs.readFileSync(language.file, "utf-8").split(/\r?\n/);
@@ -191,8 +191,8 @@ convert_set.forEach((line, index) => {
   const l_patterns = patterns.filter((pat) => {
     return pat.id === "no" ? !line.pattern : line.pattern;
   });
-  // Create table HTML（限定授権 A-5。SVG 変換より前に置くことで、A-6 の早期 return が
-  // SVG 変換ロジックを1文字も動かさずに済む — 設計 §14.4.2 #4 の推奨形）
+  // Create table HTML（SVG 変換より前に置くことで、表生成のみの経路の早期 return が
+  // SVG 変換ロジックを1文字も動かさずに済む）
   append_table_row(line, type);
   if (readme_only) return;
   const xml = fs.readFileSync(`./original/${original}.svg`, "utf-8");
@@ -221,15 +221,15 @@ convert_set.forEach((line, index) => {
   });
 });
 
-// 両言語の README を1つの実装で書き出す（限定授権 A-5）。
-// guard は全言語ぶんを先に通す（限定授権 A-6 後段。片方だけ書き換わる状態を作らない）。
+// 両言語の README を1つの実装で書き出す。
+// guard は全言語ぶんを先に通す（片方だけ書き換わる状態を作らない）。
 languages.forEach((language) => assert_markers(language));
 languages.forEach((language) => write_icon_table(language));
 
-// 表生成のみの経路（限定授権 A-6）。以降の PNG 変換は追跡下の png/ を書き換えるため通らない。
+// 表生成のみの経路。以降の PNG 変換は追跡下の png/ を書き換えるため通らない。
 if (readme_only) return;
 
-// SVG→PNG 変換を sharp（librsvg 経由）で行う（phantomjs 系 svg-to-png の置換。設計 oct26-m5-t8 §5）。
+// SVG→PNG 変換を sharp（librsvg 経由）で行う（phantomjs 系 svg-to-png の置換）。
 // 出力は追跡下の png/<base>.png と同名・同寸法（28×40）にする。
 async function convert_to_png() {
   const out_dir = path.resolve(__dirname, "./png");
