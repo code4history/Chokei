@@ -9,6 +9,12 @@ allowBuilds:
 # pnpm 11 は package.json の pnpm.overrides を読まないため、ここ（workspace 設定）へ置く。
 overrides:
   sharp: "0.35.5"
+  # piconvert が引く svgo 2 系は stable 0.1.8（非推奨・置換先なし）を引く。stable を外したのは
+  # svgo 3 以降なので、piconvert に限って svgo 3 系へ寄せる。piconvert が svgo に渡すのは
+  # optimize(input, { multipass: true }) と .data の読出しだけで、3 系でも同じ形で動く
+  # （v2.8.4 / v3.3.5 / v4.1.0 で同入力を比較し、v3 が出力まで v2 と一致・v4 は既定で
+  # viewBox と title を残し挙動が変わるため 3 系に留める）。
+  "piconvert>svgo": "^3.3.5"
   # eslint の系が引く minimatch: <11.0.1 の medium（GHSA-g3hv-75wg-m249）。修正版は 11 系だけ。
   # glob 10・11 は minimatch 11 と組めないので、全体ではなく eslint の系の親に限って上げる
   "eslint>minimatch": "^11.0.1"
