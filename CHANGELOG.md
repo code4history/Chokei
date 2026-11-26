@@ -2,7 +2,7 @@
 
 このプロジェクトの主な変更を記録します。版数は [Semantic Versioning](https://semver.org/) に従います。Chokei は npm に公開せず、GitHub のタグと Release で版を示します。
 
-## [Unreleased]
+## [2.1.1-rc.1] - 2026-11-26
 
 ### Added
 - `LICENSE` を追加（#17）。`package.json` と README が示す CC BY-SA 4.0 の本文（legalcode）を置いた
